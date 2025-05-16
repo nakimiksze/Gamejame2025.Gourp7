@@ -8,7 +8,3 @@ UserSettings/
 *.csproj
 *.sln
 *.user
-# Unityのログファイルを無視
-Logs/
-Logs/*.log
-**/Logs/*.log
