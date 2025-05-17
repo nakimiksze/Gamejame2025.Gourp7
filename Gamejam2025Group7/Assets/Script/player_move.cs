@@ -12,7 +12,7 @@ public class player_move : MonoBehaviour
         InvokeRepeating("myBullet_create", 0, interval);
     }
 
-    void FixedUpdate()
+    void FixedUpdate() //プレイヤーwasdで移動制御
     {
         if (Input.GetKey(KeyCode.W))
         {
@@ -32,14 +32,14 @@ public class player_move : MonoBehaviour
         }
     }
 
-    private void myBullet_create()
+    private void myBullet_create() //弾を前方で発射
     {
         Vector3 newPos = this.transform.position;
-        Vector3 offset = new Vector3(0.25f, 0, 0);
+        Vector3 offset = new Vector3(0.25f, 1.25f, 0);
 
         newPos += offset;
         var b = Instantiate(myBullet, newPos, Quaternion.identity);
-        newPos -= 2 * offset;
+        newPos.x -= 2 * offset.x;
         var c = Instantiate(myBullet, newPos, Quaternion.identity);
     }
 }
