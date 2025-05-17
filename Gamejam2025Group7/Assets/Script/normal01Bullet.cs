@@ -12,7 +12,7 @@ public class normal01Bullet : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("player"); //ƒqƒGƒ‰ƒ‹ƒL[ã‚Ìplayer‚ğ“ü‚ê‚é
-        Destroy(this.gameObject, 7); //7•bŒã‚É©“®Á–Å
+        Destroy(this.gameObject, 6); //6•bŒã‚É©“®Á–Å
     }
 
     void FixedUpdate()

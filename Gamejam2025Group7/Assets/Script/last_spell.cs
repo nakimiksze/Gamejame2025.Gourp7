@@ -5,12 +5,16 @@ public class last_spell : MonoBehaviour
 {
     [SerializeField] private float interval = 0.1f;
     [SerializeField] private GameObject[] bossBullet = new GameObject[3];
+    [SerializeField] private GameObject cutin;
     [SerializeField] Text spell_text;
 
-    private Vector3 newPos;
+    [SerializeField] Slider boss_slider;
+    [SerializeField] private float bossmin_HP = 0, boss01_HP = 1800;//<- HP4000ぐらいかと
 
-    private float tim = 0;
-    private int boss01_HP = 1800,i,j = 0;
+    private Vector3 newPos, StartPos/*,stanPos*/;
+
+    private float tim = 0,time0 = 0;
+    private int i,j = 0,k = 0,cha = 0,c_x = 1,c_y = -1;
     private RectTransform text_move;
 
 
@@ -19,25 +23,80 @@ public class last_spell : MonoBehaviour
     {
         spell_text = GameObject.Find("lastspell").GetComponent<Text>();
         text_move = GameObject.Find("lastspell").GetComponent<RectTransform>();
+        boss_slider = GameObject.Find("boss_HP").GetComponent<Slider>();
+        cutin = GameObject.Find("StandingPicture_Boss");
+        //stanPos = cutin.transform.position;
+
+        boss_slider.maxValue = boss01_HP;
+        boss_slider.minValue = bossmin_HP;
+        boss_slider.value = bossmin_HP;
+        boss_slider.gameObject.SetActive(true);
+
         newPos = this.transform.position;
+        StartPos = newPos;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
         tim += Time.deltaTime;
+        time0 += Time.deltaTime;
+
+        newPos = this.transform.position;
+
+        if (StartPos.y - newPos.y <= 3 && k == 0) transform.Translate(0, -0.075f, 0); //一定の距離進んだら止まる
+        else k = 1;
+
+        if (time0 > 5 && k == 1)
+        {
+            if (cha == 3) 
+            { 
+                cha = 2;
+                c_x = -1;
+                c_y = 1;
+            }
+            else if (cha == 2)
+            {
+                cha = 1;
+                c_x = 1;
+                c_y = 1;
+            }
+            else if (cha == 1)
+            {
+                cha = 0;
+                c_x = 1;
+                c_y = -1;
+            }
+            else
+            {
+                cha = 3;
+                c_x = -1;
+                c_y = -1;
+            }
+            time0 = 0;
+        }
+        else if (time0 > 4 && k == 1)
+        {
+            transform.Translate(c_x * 0.075f,c_y  * 0.01f, 0);
+        }
+
         if (boss01_HP <= 1500 && j == 0) //ボスが一定のHPになった瞬間
         {
             InvokeRepeating("normal01Bullet_create", 0, interval * 20);
             j = 1;
         }
+
         if (boss01_HP <= 1000 && j == 1) //ボスが一定のHPになった瞬間
         {
             CancelInvoke(); //通常攻撃の停止
             spell_text.enabled = true; //スペル名を表示
-            InvokeRepeating("text_move01", 2, interval * 0.025f); //一定秒後テキストを上部に移動
+            InvokeRepeating("cutin_move01", 0, interval * 0.025f); //一定秒後テキストを上部に移動
+            InvokeRepeating("text_move01", 3, interval * 0.025f); //一定秒後テキストを上部に移動
             j = 2; //一回しかやらないようにするため
         }
+
+        boss_slider.value = Mathf.Clamp(boss01_HP, bossmin_HP, boss01_HP);
+
         if (boss01_HP <= 0)//bossを倒した！
         {
             //enemyBulletのタグがついているobjを消す
@@ -48,6 +107,7 @@ public class last_spell : MonoBehaviour
             }
             //ラストスペルのテキスト非表示
             spell_text.enabled = false;
+            boss_slider.gameObject.SetActive(false);
             //bossをデストロイ！
             Destroy(this.gameObject);
         }
@@ -64,6 +124,26 @@ public class last_spell : MonoBehaviour
             var c = Instantiate(bossBullet[0], newPos, Quaternion.Euler(0, 0, tim * i * 30f));
         }
     }
+
+    private void cutin_move01() //立ち絵移動1 ※枠次第で値変える必要有
+    {
+        cutin.transform.position += new Vector3(-0.02f, 0, 0);
+        if (cutin.transform.position.x <= 8) //一定の位置に着いた瞬間
+        {
+            CancelInvoke("cutin_move01");
+            InvokeRepeating("cutin_move02", 2.5f, interval * 0.025f);
+        }
+    }
+
+    private void cutin_move02() //立ち絵移動2 ※枠次第で値変える必要有
+    {
+        cutin.transform.position += new Vector3(0.1f, 0, 0);
+        if (cutin.transform.position.x >= 15) //一定の位置に着いた瞬間
+        {
+            CancelInvoke("cutin_move02");
+        }
+    }
+
 
     private void text_move01() //テキスト移動 ※枠次第で値変える必要有
     {
@@ -121,5 +201,4 @@ public class last_spell : MonoBehaviour
             boss01_HP -= 5;
         }
     }
-
 }

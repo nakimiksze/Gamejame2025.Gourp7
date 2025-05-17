@@ -25,7 +25,7 @@ public class enemy01_move : MonoBehaviour
     {
         tim += Time.deltaTime;
         newPos = this.transform.position;
-        if(StartPos.y - newPos.y <= 4)transform.Translate(0, -0.075f, 0); //一定の距離進んだら止まる
+        if(StartPos.y - newPos.y <= 3)transform.Translate(0, -0.075f, 0); //一定の距離進んだら止まる
         if(tim >= 3) //一定の時間後でまた動く
         {
             if (newPos.x > 0) //画面右にいるなら、右下へ ※枠次第で値変える必要有
@@ -43,7 +43,7 @@ public class enemy01_move : MonoBehaviour
 
     private void enemy01Bullet_create() //攻撃パターン1
     {
-        if(StartPos.y - newPos.y >= 4) //一定の位置になったらスタート ※枠次第で値変える必要有
+        if(StartPos.y - newPos.y >= 3) //一定の位置になったらスタート ※枠次第で値変える必要有
         {
             if (newPos.x > 0) //画面右にいるなら、左下に向けて攻撃 ※枠次第で値変える必要有
             {

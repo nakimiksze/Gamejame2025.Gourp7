@@ -3,9 +3,12 @@ using UnityEngine.UI;
 
 public class WeekEnemySystem : MonoBehaviour
 {
+    public static WeekEnemySystem instance; //広域型にするぞい
+
     [SerializeField] private float interval01 = 1, interval02 = 1;
-    [SerializeField] private GameObject enemy01,enemy02,boss01;
+    [SerializeField] private GameObject enemy01,enemy02,boss01,Mboss01;
     [SerializeField] Text spell_text;
+    [SerializeField] Slider boss_slider;
 
     private Vector3 newPos;
     private Vector3[] corPos = new [] { new Vector3(5f,6f,0f), new Vector3(-1f,6f,1f), 
@@ -20,12 +23,24 @@ public class WeekEnemySystem : MonoBehaviour
                                         new Vector3(10f,6f,0f), new Vector3(-6f,6f,1f)
                                       }; //雑魚敵01の座標 ※枠次第で値変える必要有
 
-    private int i = 0,check,j = 0,k = 0;
+    private int i = 0,check,k = 0,m = 0,n = 0;
+    public int j = 0;
+    //WeekEnemySystem.instance.j = 0; <-中ボス消滅時に入れtaze
+
+    public void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         spell_text.enabled = false;
+        boss_slider.gameObject.SetActive(false);
+
         check = 0;
         newPos = this.transform.position;
         InvokeRepeating("enemy01_create", 0, interval01);
@@ -33,6 +48,11 @@ public class WeekEnemySystem : MonoBehaviour
 
     void FixedUpdate()　//敵召喚の制御
     {
+        if (j == 0 && m == 1 && n == 0)
+        {
+            InvokeRepeating("enemy01_create", 0, interval01);
+            n = 1;
+        }
         if (i >= 10 && j == 0)
         {
             CancelInvoke("enemy01_create");
@@ -48,13 +68,19 @@ public class WeekEnemySystem : MonoBehaviour
         {
             CancelInvoke("enemy01_create");
             InvokeRepeating("enemy02_create", 0, interval02);
-            i = 0;
             j = 4;
         }
-        if(j == 5) //ここで中ボス？(現在の指定先はボス)
+        if(j == 5 && m == 0) //ここで中ボス？(現在の指定先はボス)
         {
+            i = 0;
+            m = 1;
             Invoke("boss01_create", 0);
             j = 7;
+        }
+        if(j == 5 && m == 1)
+        {
+            m = 2;
+            Invoke("boss01_create", 0);
         }
         /*
         ↑中ボスが消滅時に中ボス側のスクリプトからこちらのスクリプトの変数を変える(j = 0にする)
@@ -100,8 +126,17 @@ public class WeekEnemySystem : MonoBehaviour
 
     private void boss01_create() //ボス召喚（仮）
     {
-        newPos.y = 3;
-        var b = Instantiate(boss01, newPos, Quaternion.identity);
+        //newPos.y = 3;
+        boss_slider.gameObject.SetActive(true);
+
+        if (m == 1) 
+        {
+            var b = Instantiate(Mboss01, newPos, Quaternion.identity); 
+        }
+        else
+        {
+            var b = Instantiate(boss01, newPos, Quaternion.identity);
+        }
         newPos = this.transform.position;
     }
 }
