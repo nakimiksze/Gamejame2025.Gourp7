@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      AM_Ziki_1_0: -2571286339029536847
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

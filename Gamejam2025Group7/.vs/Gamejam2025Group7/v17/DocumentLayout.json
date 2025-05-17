@@ -3,16 +3,28 @@
   "WorkspaceRootPath": "C:\\kazpin\\Group7_\\Gamejam2025Group7\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6DD4E13C-5C1B-48DC-32BC-B3A35B3B3BE2}|Assembly-CSharp.csproj|C:\\kazpin\\Group7_\\Gamejam2025Group7\\assets\\script\\mybullet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6DD4E13C-5C1B-48DC-32BC-B3A35B3B3BE2}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\mybullet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{6DD4E13C-5C1B-48DC-32BC-B3A35B3B3BE2}|Assembly-CSharp.csproj|c:\\kazpin\\group7_\\gamejam2025group7\\assets\\script\\player_move.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6DD4E13C-5C1B-48DC-32BC-B3A35B3B3BE2}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\player_move.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6DD4E13C-5C1B-48DC-32BC-B3A35B3B3BE2}|Assembly-CSharp.csproj|c:\\kazpin\\group7_\\gamejam2025group7\\assets\\script\\zikidestroying.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{6DD4E13C-5C1B-48DC-32BC-B3A35B3B3BE2}|Assembly-CSharp.csproj|C:\\kazpin\\Group7_\\Gamejam2025Group7\\assets\\script\\zikidestroying.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6DD4E13C-5C1B-48DC-32BC-B3A35B3B3BE2}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\zikidestroying.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6DD4E13C-5C1B-48DC-32BC-B3A35B3B3BE2}|Assembly-CSharp.csproj|C:\\kazpin\\Group7_\\Gamejam2025Group7\\assets\\script\\mybullet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6DD4E13C-5C1B-48DC-32BC-B3A35B3B3BE2}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\mybullet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6DD4E13C-5C1B-48DC-32BC-B3A35B3B3BE2}|Assembly-CSharp.csproj|C:\\kazpin\\Group7_\\Gamejam2025Group7\\assets\\script\\enemy01_move.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6DD4E13C-5C1B-48DC-32BC-B3A35B3B3BE2}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\enemy01_move.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6DD4E13C-5C1B-48DC-32BC-B3A35B3B3BE2}|Assembly-CSharp.csproj|C:\\kazpin\\Group7_\\Gamejam2025Group7\\assets\\script\\weekenemysystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6DD4E13C-5C1B-48DC-32BC-B3A35B3B3BE2}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\weekenemysystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6DD4E13C-5C1B-48DC-32BC-B3A35B3B3BE2}|Assembly-CSharp.csproj|C:\\kazpin\\Group7_\\Gamejam2025Group7\\assets\\script\\enemy02_move.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6DD4E13C-5C1B-48DC-32BC-B3A35B3B3BE2}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\enemy02_move.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,24 +34,61 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
+              "Title": "WeekEnemySystem.cs",
+              "DocumentMoniker": "C:\\kazpin\\Group7_\\Gamejam2025Group7\\Assets\\Script\\WeekEnemySystem.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\WeekEnemySystem.cs",
+              "ToolTip": "C:\\kazpin\\Group7_\\Gamejam2025Group7\\Assets\\Script\\WeekEnemySystem.cs",
+              "RelativeToolTip": "Assets\\Script\\WeekEnemySystem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-17T11:15:43.651Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "enemy02_move.cs",
+              "DocumentMoniker": "C:\\kazpin\\Group7_\\Gamejam2025Group7\\Assets\\Script\\enemy02_move.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\enemy02_move.cs",
+              "ToolTip": "C:\\kazpin\\Group7_\\Gamejam2025Group7\\Assets\\Script\\enemy02_move.cs",
+              "RelativeToolTip": "Assets\\Script\\enemy02_move.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-17T10:41:09.553Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "enemy01_move.cs",
+              "DocumentMoniker": "C:\\kazpin\\Group7_\\Gamejam2025Group7\\Assets\\Script\\enemy01_move.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\enemy01_move.cs",
+              "ToolTip": "C:\\kazpin\\Group7_\\Gamejam2025Group7\\Assets\\Script\\enemy01_move.cs",
+              "RelativeToolTip": "Assets\\Script\\enemy01_move.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAADwvy0AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-17T10:40:01.094Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "player_move.cs",
               "DocumentMoniker": "C:\\kazpin\\Group7_\\Gamejam2025Group7\\Assets\\Script\\player_move.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\player_move.cs",
               "ToolTip": "C:\\kazpin\\Group7_\\Gamejam2025Group7\\Assets\\Script\\player_move.cs",
               "RelativeToolTip": "Assets\\Script\\player_move.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAADwvygAAABDAAAAAAAAAA==",
+              "ViewState": "AgIAABYAAAAAAAAAAAAAwCYAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-15T15:55:56.2Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "myBullet.cs",
               "DocumentMoniker": "C:\\kazpin\\Group7_\\Gamejam2025Group7\\Assets\\Script\\myBullet.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\myBullet.cs",
@@ -52,13 +101,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "ZikiDestroying.cs",
               "DocumentMoniker": "C:\\kazpin\\Group7_\\Gamejam2025Group7\\Assets\\Script\\ZikiDestroying.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\ZikiDestroying.cs",
               "ToolTip": "C:\\kazpin\\Group7_\\Gamejam2025Group7\\Assets\\Script\\ZikiDestroying.cs",
               "RelativeToolTip": "Assets\\Script\\ZikiDestroying.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAqAAAAAAAAAA==",
+              "ViewState": "AgIAACUAAAAAAAAAAADwvzgAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-15T15:36:12.914Z",
               "EditorCaption": ""
