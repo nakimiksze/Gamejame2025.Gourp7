@@ -7,6 +7,10 @@ public class ZikiDestroying : MonoBehaviour
     [SerializeField] private GameObject myBullet;
     [SerializeField] private SpriteRenderer playerSprite;
     [SerializeField] private GameObject bomb;
+    [SerializeField] private AudioClip deathSe;
+    [SerializeField] private AudioClip bombSe;
+    [SerializeField] private float bombVolume = 1.0f;
+    private AudioSource audioSource;
     private GameObject[] bombs = new GameObject[3];
     private GameObject hitMarkerActivating;
     bool isShiftPushing = false;
@@ -20,9 +24,9 @@ public class ZikiDestroying : MonoBehaviour
     int mainShotCooldown = 0;
     void DestroyAllObjectsWithTag(string tag)
     {
-        GameObject[] objects = GameObject.FindGameObjectsWithTag(tag); // w’èƒ^ƒO‚ÌƒIƒuƒWƒFƒNƒg‚ğæ“¾
+        GameObject[] objects = GameObject.FindGameObjectsWithTag(tag); // ï¿½wï¿½ï¿½^ï¿½Oï¿½ÌƒIï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½ï¿½ï¿½æ“¾
 
-        foreach (GameObject obj in objects) // ”z—ñ“à‚ÌƒIƒuƒWƒFƒNƒg‚ğ‚·‚×‚Äíœ
+        foreach (GameObject obj in objects) // ï¿½zï¿½ï¿½ï¿½ï¿½ÌƒIï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½ï¿½ï¿½ï¿½ï¿½×‚Äíœ
         {
             Destroy(obj);
         }
@@ -54,8 +58,8 @@ public class ZikiDestroying : MonoBehaviour
         DestroyAllObjectsWithTag("enemy");
         for (int i = 0; i < 3; i++)
         {
-            float angle = i * 120f; // 120“x‚¸‚Â”z’u
-            bombs[i] = Instantiate(bomb, transform.position, Quaternion.identity, transform); // ©‹@‚ÌqƒIƒuƒWƒFƒNƒg‚Éİ’è
+            float angle = i * 120f; // 120ï¿½xï¿½ï¿½ï¿½Â”zï¿½u
+            bombs[i] = Instantiate(bomb, transform.position, Quaternion.identity, transform); // ï¿½ï¿½ï¿½@ï¿½Ìqï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½Éİ’ï¿½
             StartExplosion++;
         }
         
@@ -82,10 +86,11 @@ public class ZikiDestroying : MonoBehaviour
         hitMarkerActivating.SetActive(false);
         //InvokeRepeating("MyBullet_create", 0, interval);
         Debug.Log(hitMarker.transform.position);
+        audioSource = GetComponent<AudioSource>();
     }
     void FixedUpdate()
     {
-        //’á‘¬ˆÚ“®‚©”Û‚©‚Ìˆ—
+        //ï¿½á‘¬ï¿½Ú“ï¿½ï¿½ï¿½ï¿½Û‚ï¿½ï¿½Ìï¿½ï¿½ï¿½
         if (Input.GetKey(KeyCode.LeftShift))
         {
             isShiftPushing = true;
@@ -94,8 +99,8 @@ public class ZikiDestroying : MonoBehaviour
         {
             isShiftPushing = false;
         }
-        float zikiSpeed = isShiftPushing ? 0.11f : 0.22f; // ’á‘¬‚È‚ç‚È‚ñ‚Æ‚©A‚‘¬‚È‚ç‚È‚ñ‚¿‚á‚ç
-        //ˆÚ“®‚Ìˆ—
+        float zikiSpeed = isShiftPushing ? 0.11f : 0.22f; // ï¿½á‘¬ï¿½È‚ï¿½È‚ï¿½Æ‚ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½È‚ï¿½È‚ñ‚¿‚ï¿½ï¿½
+        //ï¿½Ú“ï¿½ï¿½Ìï¿½ï¿½ï¿½
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
             transform.Translate(0, zikiSpeed, 0);
@@ -123,19 +128,19 @@ public class ZikiDestroying : MonoBehaviour
             DestroyAllObjectsWithTag("bullet");
             DestroyAllObjectsWithTag("enemy");
         }
-            //©‹@‚ª–³“G©‹@‚ğ”¼“§–¾‚É‚·‚é
-            SpriteRenderer sr = GetComponent<SpriteRenderer>(); // SpriteRenderer‚ğæ“¾
+            //ï¿½ï¿½ï¿½@ï¿½ï¿½ï¿½ï¿½ï¿½Gï¿½ï¿½ï¿½ï¿½ï¿½@ï¿½ğ”¼“ï¿½ï¿½ï¿½ï¿½É‚ï¿½ï¿½ï¿½
+            SpriteRenderer sr = GetComponent<SpriteRenderer>(); // SpriteRendererï¿½ï¿½ï¿½æ“¾
         if (sr != null)
         {
             Color newColor = sr.color;
-            newColor.a = zikiInvulnerable ? 0.5f : 1f; // “§–¾“x‚ğ•ÏX
+            newColor.a = zikiInvulnerable ? 0.5f : 1f; // ï¿½ï¿½ï¿½ï¿½ï¿½xï¿½ï¿½ÏX
             sr.color = newColor;
         }
 
-        //’á‘¬ƒ}[ƒJ[‚ÌÀ•Wæ“¾E•\¦
+        //ï¿½á‘¬ï¿½}ï¿½[ï¿½Jï¿½[ï¿½Ìï¿½ï¿½Wï¿½æ“¾ï¿½Eï¿½\ï¿½ï¿½
         Vector3 playerPos = transform.position;
         hitMarkerActivating.transform.position = playerPos;
-        //’á‘¬ˆÚ“®‚©”Û‚©‚Ìˆ—
+        //ï¿½á‘¬ï¿½Ú“ï¿½ï¿½ï¿½ï¿½Û‚ï¿½ï¿½Ìï¿½ï¿½ï¿½
         if (Input.GetKey(KeyCode.LeftShift))
         {
             isShiftPushing = true;
@@ -144,7 +149,7 @@ public class ZikiDestroying : MonoBehaviour
         {
             isShiftPushing = false;
         }
-        //ƒ{ƒ€ƒN[ƒ‹ƒ^ƒCƒ€‚©”Û‚©‚Ìˆ—
+        //ï¿½{ï¿½ï¿½ï¿½Nï¿½[ï¿½ï¿½ï¿½^ï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½Û‚ï¿½ï¿½Ìï¿½ï¿½ï¿½
         if (xCoolTime&& xCoolTimeCounter<=250)
         {
             xCoolTimeCounter++;
@@ -157,15 +162,15 @@ public class ZikiDestroying : MonoBehaviour
         }
 
 
-        if (isShiftPushing) // ShiftƒL[‚ğ‰Ÿ‚µ‚Ä‚¢‚éŠÔ
+        if (isShiftPushing) // Shiftï¿½Lï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½ï¿½
         {
-            hitMarkerActivating.SetActive(true);// ”’‚¢ŠÛ‚ğ•\¦
+            hitMarkerActivating.SetActive(true);// ï¿½ï¿½ï¿½ï¿½ï¿½Û‚ï¿½\ï¿½ï¿½
         }
         else
         {
-            hitMarkerActivating.SetActive(false); // ’Êí‚Í”ñ•\¦
+            hitMarkerActivating.SetActive(false); // ï¿½Êíï¿½Í”ï¿½\ï¿½ï¿½
         }
-        if (Input.GetKey(KeyCode.Z)) // ZƒL[‚Å’e”­Ë
+        if (Input.GetKey(KeyCode.Z)) // Zï¿½Lï¿½[ï¿½Å’eï¿½ï¿½ï¿½ï¿½
         {
             MyBullet_create();
         }
@@ -173,31 +178,36 @@ public class ZikiDestroying : MonoBehaviour
         {
             mainShotCooldown = 0;
         }
-        if (Input.GetKey(KeyCode.X)&& !xCoolTime)// XƒL[‚Åƒ{ƒ€
+        if (Input.GetKey(KeyCode.X) && !xCoolTime)// Xï¿½Lï¿½[ï¿½Åƒ{ï¿½ï¿½
         {
             BombStart();
             xCoolTime = true;
+            audioSource.PlayOneShot(bombSe);
         }
-        if (kuraiTriggered)// ‚­‚ç‚¢ƒ{ƒ€ó•tƒCƒxƒ“ƒg‚ª”­¶‚µ‚Ä‚¢‚È‚¢‚È‚ç‰½‚à‚µ‚È‚¢
+        if (kuraiTriggered)// ï¿½ï¿½ï¿½ç‚¢ï¿½{ï¿½ï¿½ï¿½ï¿½tï¿½Cï¿½xï¿½ï¿½ï¿½gï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½È‚ï¿½ï¿½È‚ç‰½ï¿½ï¿½ï¿½ï¿½ï¿½È‚ï¿½
         {
             kuraiFrameCounter++;
 
             if (kuraiFrameCounter >= 8 && !zikiInvulnerable)
             {
-                // 8ƒtƒŒ[ƒ€Œo‰ß•X‚ª‰Ÿ‚³‚ê‚È‚©‚Á‚½ê‡
+                // 8ï¿½tï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½oï¿½ßï¿½Xï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê‡
                 Vector3 position = new Vector3(-2.78f, -3.25f, 0f);
                 transform.position = position;
-                kuraiFrameCounter = 0; // ƒŠƒZƒbƒg
+                kuraiFrameCounter = 0; // ï¿½ï¿½ï¿½Zï¿½bï¿½g
                 kuraiTriggered = false;
                 xCoolTime = true;
                 zikiInvulnerable = true;
                 xCoolTimeCounter += 180;
 
+                var tmp = audioSource.volume;
+                audioSource.volume = bombVolume;
+                audioSource.PlayOneShot(deathSe);
+                audioSource.volume = tmp;
             }
             else if (kuraiFrameCounter >= 8 && zikiInvulnerable)
             {
 
-                kuraiFrameCounter = 0; // ƒŠƒZƒbƒg
+                kuraiFrameCounter = 0; // ï¿½ï¿½ï¿½Zï¿½bï¿½g
                 kuraiTriggered = false;
             }
         }
