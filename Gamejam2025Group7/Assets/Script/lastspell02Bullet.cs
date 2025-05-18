@@ -42,32 +42,6 @@ public class lastspell02Bullet : MonoBehaviour
                 Invoke("boss03Bullets_create", 0f);
                 Destroy(this.gameObject, 0f);
             }
-            /*
-            if (StartPos.y - this.transform.position.y > 4.5f)
-            {
-                Debug.Log("1.5");
-                Invoke("boss03Bullets_create", 0f);
-                Destroy(this.gameObject, 0);
-            }
-            else if (StartPos.y - this.transform.position.y > 3f)
-            {
-                Debug.Log("1");
-                Invoke("boss03Bullets_create", 0.5f);
-                Destroy(this.gameObject, 0.5f);
-            }
-            else if (StartPos.y - this.transform.position.y > 0f)
-            {
-                Debug.Log("0.5");
-                Invoke("boss03Bullets_create", 1f);
-                Destroy(this.gameObject, 1);
-            }
-            else
-            {
-                Debug.Log("0");
-                Invoke("boss03Bullets_create)", 1.5f);
-                Destroy(this.gameObject, 1.5f);
-            }
-            */
             j = 1;
         }
     }

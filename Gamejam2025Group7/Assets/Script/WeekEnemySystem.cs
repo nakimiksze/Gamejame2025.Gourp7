@@ -11,20 +11,20 @@ public class WeekEnemySystem : MonoBehaviour
     [SerializeField] Slider boss_slider;
 
     private Vector3 newPos;
-    private Vector3[] corPos = new [] { new Vector3(5f,6f,0f), new Vector3(-1f,6f,1f), 
-                                        new Vector3(7f,6f,0f), new Vector3(-5f,6f,1f),
-                                        new Vector3(1f,6f,0f), new Vector3(-4f,6f,1f),
-                                        new Vector3(8f,6f,0f), new Vector3(-3f,6f,1f),
-                                        new Vector3(4f,6f,0f), new Vector3(-9f,6f,1f),
-                                        new Vector3(6f,6f,0f), new Vector3(-7f,6f,1f),
-                                        new Vector3(2f,6f,0f), new Vector3(-2f,6f,1f),
-                                        new Vector3(9f,6f,0f), new Vector3(-8f,6f,1f),
-                                        new Vector3(3f,6f,0f), new Vector3(10f,6f,1f),
-                                        new Vector3(10f,6f,0f), new Vector3(-6f,6f,1f)
+    private Vector3[] corPos = new [] { new Vector3(-0.3f,6f,0f), new Vector3(-5.7f,6f,1f), 
+                                        new Vector3(1.3f,6f,0f), new Vector3(-4.2f,6f,1f),
+                                        new Vector3(-0.2f,6f,0f), new Vector3(-5.9f,6f,1f),
+                                        new Vector3(-1.8f,6f,0f), new Vector3(-3.4f,6f,1f),
+                                        new Vector3(0.2f,6f,0f), new Vector3(-2.9f,6f,1f),
+                                        new Vector3(1f,6f,0f), new Vector3(-5f,6f,1f),
+                                        new Vector3(-0.7f,6f,0f), new Vector3(-8f,6f,1f),
+                                        new Vector3(2.1f,6f,0f), new Vector3(-5.4f,6f,1f),
+                                        new Vector3(-2.5f,6f,0f), new Vector3(-3.3f,6f,1f),
+                                        new Vector3(1.3f,6f,0f), new Vector3(-6.9f,6f,1f)
                                       }; //�G���G01�̍��W ���g����Œl�ς���K�v�L
 
-    private int i = 0,check,k = 0,m = 0,n = 0;
-    public int j = 0;
+    private int i = 0,k = 0,m = 0,n = 0;
+    public int j = 0, check;
     //WeekEnemySystem.instance.j = 0; <-���{�X���Ŏ��ɓ���taze
 
     public void Awake()
@@ -100,9 +100,9 @@ public class WeekEnemySystem : MonoBehaviour
     private void enemy02_create()//�G���G02�����I
     {
         if (check == 0) //���E��5�񂸂��� ���g����Œl�ς���K�v�L
-            newPos.x = 1;
+            newPos.x = -8;
         else
-            newPos.x = -1;
+            newPos.x = 2.1f;
         
         var b = Instantiate(enemy02, newPos, Quaternion.identity);
         newPos.y += 2;

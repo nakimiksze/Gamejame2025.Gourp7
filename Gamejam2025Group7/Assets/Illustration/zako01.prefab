@@ -77,7 +77,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -30
   m_Sprite: {fileID: -7160200910516659909, guid: 27cffd4780091774aa33c5aaf17d2965, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interval: 1
-  enemy01Bullet: {fileID: 3038078504493492487, guid: ba3496f5f24174347a34a2ac164230a3, type: 3}
+  enemy01Bullet: {fileID: 3311860644297728627, guid: f3f2f6a29e5cae342aa39f57040c6ddc, type: 3}
 --- !u!61 &1056198546750224674
 BoxCollider2D:
   m_ObjectHideFlags: 0

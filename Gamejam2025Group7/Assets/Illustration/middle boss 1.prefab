@@ -77,7 +77,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -30
   m_Sprite: {fileID: -1080968891854481144, guid: 9331c0cb542763d41a327485dd6ef0af, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -149,10 +149,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interval: 0.1
   MbossBullet:
-  - {fileID: 3038078504493492487, guid: ba3496f5f24174347a34a2ac164230a3, type: 3}
-  - {fileID: 3038078504493492487, guid: 49a3f404a92203741b297680f7417b24, type: 3}
-  - {fileID: 3038078504493492487, guid: 6932cf22b0133644697a5620c1941f15, type: 3}
-  - {fileID: 3038078504493492487, guid: 599f26b01ee5330428b04722592d4ed6, type: 3}
+  - {fileID: 5984049198733194277, guid: dde2aa6c1e9b9a441a7c1304f4b52456, type: 3}
+  - {fileID: 2334073636275585628, guid: f34368c86508e1f4787d4d16ce7035ea, type: 3}
+  - {fileID: 4359159965343665392, guid: 52832f6b93795d74baba175941d68102, type: 3}
+  - {fileID: 7697303436872138365, guid: ece1abfef9f4cb743b1bd3076add2a02, type: 3}
   boss_slider: {fileID: 0}
   bossmin_HP: 0
-  boss01_HP: 1800
+  boss01_HP: 2000

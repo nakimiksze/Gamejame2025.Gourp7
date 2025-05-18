@@ -28,7 +28,7 @@ public class enemy01_move : MonoBehaviour
         if(StartPos.y - newPos.y <= 3)transform.Translate(0, -0.075f, 0); //一定の距離進んだら止まる
         if(tim >= 3) //一定の時間後でまた動く
         {
-            if (newPos.x > 0) //画面右にいるなら、右下へ ※枠次第で値変える必要有
+            if (newPos.x > -2.8f) //画面右にいるなら、右下へ ※枠次第で値変える必要有
             {
                 transform.Translate(0.025f, -0.05f, 0);
             }
@@ -45,7 +45,7 @@ public class enemy01_move : MonoBehaviour
     {
         if(StartPos.y - newPos.y >= 3) //一定の位置になったらスタート ※枠次第で値変える必要有
         {
-            if (newPos.x > 0) //画面右にいるなら、左下に向けて攻撃 ※枠次第で値変える必要有
+            if (newPos.x > -2.8f) //画面右にいるなら、左下に向けて攻撃 ※枠次第で値変える必要有
             {
                 for (int i = -5; i < 4; i++)
                 {

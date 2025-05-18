@@ -20,7 +20,7 @@ public class enemy02_move : MonoBehaviour
         newPos = this.transform.position;
         StartPos = this.transform.position;
         InvokeRepeating("enemy02Bullet_create", 0, interval); //�U���p�^�[��1�X�^�[�g
-        Destroy(this.gameObject, 6); //6�b��Ɏ�������
+        Destroy(this.gameObject, 5); //6�b��Ɏ�������
     }
 
     void FixedUpdate()
@@ -30,7 +30,7 @@ public class enemy02_move : MonoBehaviour
         newPos = this.transform.position;
         
         t01 += Time.deltaTime * 0.15f;
-        if (newPos.x > 0) //��ʉE�ɂ���Ȃ�A��������E���֌ʂ�`���ē��� ���g����Œl�ς���K�v�L
+        if (StartPos.x < -2.8f) //��ʉE�ɂ���Ȃ�A��������E���֌ʂ�`���ē��� ���g����Œl�ς���K�v�L
         {
             newPos.x += Mathf.Sin(-t01) * x;
             newPos.y += Mathf.Cos(-t01) * y;

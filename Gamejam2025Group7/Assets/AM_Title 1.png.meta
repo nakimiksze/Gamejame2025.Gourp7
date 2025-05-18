@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b0d31679a605ff448b55919b6a5b7dbf
+guid: bc0ea65ad6486c94b9b22102d2848396
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -9191767430028255754
-    second: AM_StandingPicture_Boss_3_0
+      213: -4954760200092459906
+    second: AM_Title 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: AM_StandingPicture_Boss_3_0
+      name: AM_Title 1_0
       rect:
         serializedVersion: 2
-        x: 137
+        x: 654
         y: 0
-        width: 776
-        height: 1294
+        width: 1074
+        height: 972
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6fd1923f838407080800000000000000
-      internalID: -9191767430028255754
+      spriteID: e7cde3679d72d3bb0800000000000000
+      internalID: -4954760200092459906
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 44a98c62bb410df4cb54b9d5ec808cd9
+    spriteID: e58dad24dd4f81b44b5f6ad3bf49bcb6
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      AM_StandingPicture_Boss_3_0: -9191767430028255754
+      AM_Title 1_0: -4954760200092459906
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

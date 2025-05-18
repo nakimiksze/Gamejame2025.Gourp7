@@ -11,7 +11,7 @@ public class normal01Bullet : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        player = GameObject.Find("player"); //ヒエラルキー上のplayerを入れる
+        player = GameObject.FindWithTag("Player"); //ヒエラルキー上のplayerを入れる
         Destroy(this.gameObject, 6); //6秒後に自動消滅
     }
 
@@ -22,7 +22,7 @@ public class normal01Bullet : MonoBehaviour
         else if (i == 0)
         {
             Vector3 vec = player.transform.position - this.transform.position;
-            Quaternion rotation = Quaternion.FromToRotation(Vector3.down, vec);
+            Quaternion rotation = Quaternion.FromToRotation(Vector3.up, vec);
 
             this.transform.rotation = rotation;
             this.GetComponent<Rigidbody2D>().linearVelocity = vec.normalized * sp01;

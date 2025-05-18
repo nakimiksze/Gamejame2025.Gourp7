@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class last_spell : MonoBehaviour
 {
     [SerializeField] private float interval = 0.1f;
-    [SerializeField] private GameObject[] bossBullet = new GameObject[5];
+    [SerializeField] private GameObject[] bossBullet = new GameObject[7];
     [SerializeField] private GameObject cutin;
     [SerializeField] Text spell_text;
 
@@ -44,7 +44,7 @@ public class last_spell : MonoBehaviour
 
         newPos = this.transform.position;
 
-        if (StartPos.y - newPos.y <= 3 && k == 0) transform.Translate(0, -0.075f, 0); //一定の距離進んだら止まる
+        if (StartPos.y - newPos.y <= 2 && k == 0) transform.Translate(0, -0.075f, 0); //一定の距離進んだら止まる
         else if (k == 0) k = 1;
 
         if (time0 > 5 && k == 1)
@@ -77,7 +77,7 @@ public class last_spell : MonoBehaviour
         }
         else if (time0 > 4 && k == 1)
         {
-            transform.Translate(c_x * 0.075f,c_y  * 0.01f, 0);
+            transform.Translate(c_x * 0.075f,c_y  * 0.015f, 0);
         }
 
         if (k == 1 && m == 0)
@@ -136,8 +136,8 @@ public class last_spell : MonoBehaviour
         for (int i = 0; i < 24; i++)
         {
             var a = Instantiate(bossBullet[0], newPos, Quaternion.Euler(0, 0, i * 15f));
-            var b = Instantiate(bossBullet[3], newPos, Quaternion.Euler(0, 0, i * 15f));
-            var c = Instantiate(bossBullet[4], newPos, Quaternion.Euler(0, 0, i * 15f));
+            var b = Instantiate(bossBullet[5], newPos, Quaternion.Euler(0, 0, i * 15f));
+            var c = Instantiate(bossBullet[6], newPos, Quaternion.Euler(0, 0, i * 15f));
         }
     }
 
@@ -145,18 +145,18 @@ public class last_spell : MonoBehaviour
     {
         for (int i = 0; i < 18; i++)
         {
-            var b = Instantiate(bossBullet[2], newPos, Quaternion.Euler(0, 0, i * 20f));
+            var b = Instantiate(bossBullet[3], newPos, Quaternion.Euler(0, 0, i * 20f));
         }
         for (int i = 0; i < 18; i++)
         {
-            var c = Instantiate(bossBullet[0], newPos, Quaternion.Euler(0, 0, tim * i * 20f));
+            var c = Instantiate(bossBullet[4], newPos, Quaternion.Euler(0, 0, tim * i * 20f));
         }
     }
 
     private void cutin_move01() //立ち絵移動1 ※枠次第で値変える必要有
     {
         cutin.transform.position += new Vector3(-0.02f, 0, 0);
-        if (cutin.transform.position.x <= 8) //一定の位置に着いた瞬間
+        if (cutin.transform.position.x <= 0) //一定の位置に着いた瞬間
         {
             CancelInvoke("cutin_move01");
             InvokeRepeating("cutin_move02", 2.5f, interval * 0.025f);
@@ -166,7 +166,7 @@ public class last_spell : MonoBehaviour
     private void cutin_move02() //立ち絵移動2 ※枠次第で値変える必要有
     {
         cutin.transform.position += new Vector3(0.1f, 0, 0);
-        if (cutin.transform.position.x >= 15) //一定の位置に着いた瞬間
+        if (cutin.transform.position.x >= 6) //一定の位置に着いた瞬間
         {
             CancelInvoke("cutin_move02");
         }
@@ -192,9 +192,9 @@ public class last_spell : MonoBehaviour
     private void boss01Bullet_create() //ラストスペカパターン1
     {
         var a = Instantiate(bossBullet[0], newPos, Quaternion.Euler(0, 0, tim * 120f));
-        var b = Instantiate(bossBullet[0], newPos, Quaternion.Euler(0, 0, tim * 120f + 90));
+        var b = Instantiate(bossBullet[1], newPos, Quaternion.Euler(0, 0, tim * 120f + 90));
         var c = Instantiate(bossBullet[0], newPos, Quaternion.Euler(0, 0, tim * 120f + 180));
-        var d = Instantiate(bossBullet[0], newPos, Quaternion.Euler(0, 0, tim * 120f + 270));
+        var d = Instantiate(bossBullet[1], newPos, Quaternion.Euler(0, 0, tim * 120f + 270));
         i++;
         if (i == 60) //一定回数行った瞬間
         {
@@ -206,9 +206,9 @@ public class last_spell : MonoBehaviour
 
     private void boss02Bullet_create() //ラストスペカパターン2
     {
-        var a = Instantiate(bossBullet[0], newPos, Quaternion.Euler(0, 0, -tim * 120f));
+        var a = Instantiate(bossBullet[1], newPos, Quaternion.Euler(0, 0, -tim * 120f));
         var b = Instantiate(bossBullet[0], newPos, Quaternion.Euler(0, 0, -tim * 120f + 90));
-        var c = Instantiate(bossBullet[0], newPos, Quaternion.Euler(0, 0, -tim * 120f + 180));
+        var c = Instantiate(bossBullet[1], newPos, Quaternion.Euler(0, 0, -tim * 120f + 180));
         var d = Instantiate(bossBullet[0], newPos, Quaternion.Euler(0, 0, -tim * 120f + 270));
         i++;
         if (i == 60)
@@ -223,7 +223,7 @@ public class last_spell : MonoBehaviour
     {
         for (int i = 3; i > -4; i--)
         {
-            var a = Instantiate(bossBullet[1], newPos, Quaternion.Euler(0, 0, i * 30f));
+            var a = Instantiate(bossBullet[2], newPos, Quaternion.Euler(0, 0, i * 30f));
         }
         InvokeRepeating("boss01Bullet_create", 4, interval); //ラストスペカパターン1発動
     }
