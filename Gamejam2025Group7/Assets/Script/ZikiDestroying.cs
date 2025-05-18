@@ -3,7 +3,7 @@ using UnityEngine;
 public class ZikiDestroying : MonoBehaviour
 {
     [SerializeField] private GameObject hitMarker;
-    [SerializeField] private float interval = 1;
+    [SerializeField] private int interval;
     [SerializeField] private GameObject myBullet;
     [SerializeField] private SpriteRenderer playerSprite;
     [SerializeField] private GameObject bomb;
@@ -17,6 +17,7 @@ public class ZikiDestroying : MonoBehaviour
     bool zikiInvulnerable = false;
     int xCoolTimeCounter = 0;
     float StartExplosion = 0;
+    int mainShotCooldown = 0;
     void DestroyAllObjectsWithTag(string tag)
     {
         GameObject[] objects = GameObject.FindGameObjectsWithTag(tag); // 指定タグのオブジェクトを取得
@@ -30,17 +31,21 @@ public class ZikiDestroying : MonoBehaviour
 
     void MyBullet_create()
     {
-        Vector3 newPos = this.transform.position;
-        Vector3 offset = new Vector3(0.25f, 0, 0);
+        if (mainShotCooldown == 0)
+        {
+            Vector3 newPos = this.transform.position;
+            Vector3 offset = new Vector3(0.25f, 0, 0);
 
-        newPos += offset;
-        Instantiate(myBullet, newPos, Quaternion.identity);
-        newPos -= 2 * offset;
-        Instantiate(myBullet, newPos, Quaternion.identity);
-    }
-    bool IsPlayerExisting(string player)
-    {
-        return GameObject.Find(player) != null;
+            newPos += offset;
+            Instantiate(myBullet, newPos, Quaternion.identity);
+            newPos -= 2 * offset;
+            Instantiate(myBullet, newPos, Quaternion.identity);
+            mainShotCooldown = interval;
+        }
+        else
+        {
+            mainShotCooldown --;
+        }
     }
     void BombStart()
     {
@@ -55,24 +60,27 @@ public class ZikiDestroying : MonoBehaviour
         }
         
     }
-    private void OnTriggerEnter2D(Collider2D other)
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (other.gameObject.tag == "bullet" && !zikiInvulnerable)
+        if (collision.gameObject.tag == "bullet" && !zikiInvulnerable)
         {
-            Destroy(other.gameObject);
+            Destroy(collision.gameObject);
             kuraiTriggered = true;
         }
-        if (other.gameObject.tag == "bullet" && zikiInvulnerable)
+        if (collision.gameObject.tag == "bullet" && zikiInvulnerable)
         {
-            Destroy(other.gameObject);
+            Destroy(collision.gameObject);
         }
     }
+
     private void Start()
     {
         Vector3 playerPos = transform.position;
         hitMarkerActivating = Instantiate(hitMarker, playerPos, Quaternion.identity);
         hitMarkerActivating.SetActive(false);
-        InvokeRepeating("MyBullet_create", 0, interval);
+        //InvokeRepeating("MyBullet_create", 0, interval);
         Debug.Log(hitMarker.transform.position);
     }
     void FixedUpdate()
@@ -147,51 +155,52 @@ public class ZikiDestroying : MonoBehaviour
             xCoolTimeCounter = 0;
             zikiInvulnerable = false;
         }
-        if (GameObject.FindGameObjectWithTag("Player"))
+
+
+        if (isShiftPushing) // Shiftキーを押している間
         {
+            hitMarkerActivating.SetActive(true);// 白い丸を表示
+        }
+        else
+        {
+            hitMarkerActivating.SetActive(false); // 通常時は非表示
+        }
+        if (Input.GetKey(KeyCode.Z)) // Zキーで弾発射
+        {
+            MyBullet_create();
+        }
+        if (!Input.GetKey(KeyCode.Z))
+        {
+            mainShotCooldown = 0;
+        }
+        if (Input.GetKey(KeyCode.X)&& !xCoolTime)// Xキーでボム
+        {
+            BombStart();
+            xCoolTime = true;
+        }
+        if (kuraiTriggered)// くらいボム受付イベントが発生していないなら何もしない
+        {
+            kuraiFrameCounter++;
 
-            if (isShiftPushing) // Shiftキーを押している間
+            if (kuraiFrameCounter >= 8 && !zikiInvulnerable)
             {
-                hitMarkerActivating.SetActive(true);// 白い丸を表示
-            }
-            else
-            {
-                hitMarkerActivating.SetActive(false); // 通常時は非表示
-            }
-            if (Input.GetKey(KeyCode.Z)) // Zキーで弾発射
-            {
-                MyBullet_create();
-            }
-
-            if (Input.GetKey(KeyCode.X)&& !xCoolTime)// Xキーでボム
-            {
-                BombStart();
+                // 8フレーム経過＆Xが押されなかった場合
+                Vector3 position = new Vector3(-2.78f, -3.25f, 0f);
+                transform.position = position;
+                kuraiFrameCounter = 0; // リセット
+                kuraiTriggered = false;
                 xCoolTime = true;
+                zikiInvulnerable = true;
+                xCoolTimeCounter += 180;
+
             }
-            if (kuraiTriggered)// くらいボム受付イベントが発生していないなら何もしない
+            else if (kuraiFrameCounter >= 8 && zikiInvulnerable)
             {
-                kuraiFrameCounter++;
 
-                if (kuraiFrameCounter >= 4 && !zikiInvulnerable)
-                {
-                    // 4フレーム経過＆Xが押されなかった場合
-                    Destroy(gameObject);
-                    Destroy(hitMarkerActivating);
-                    kuraiFrameCounter = 0; // リセット
-                    kuraiTriggered = false;
-                    Destroy(this);
-
-                }
-                else if (kuraiFrameCounter >= 4 && zikiInvulnerable)
-                {
-
-                    kuraiFrameCounter = 0; // リセット
-                    kuraiTriggered = false;
-                }
+                kuraiFrameCounter = 0; // リセット
+                kuraiTriggered = false;
             }
         }
         
-
-
     }
 }
