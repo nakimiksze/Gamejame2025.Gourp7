@@ -3,9 +3,9 @@ using UnityEngine.SceneManagement;
 
 public class StartButtonManager : MonoBehaviour
 {
-    [SerializeField] private string sceneName = "NextScene";
-    private void OnMouseDown()
+    [SerializeField] private string sceneName = "Scene";
+    public void GameStart()
     {
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene("Sene");
     }
 }
