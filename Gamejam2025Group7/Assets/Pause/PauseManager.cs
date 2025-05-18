@@ -24,5 +24,6 @@ public class PauseManager : MonoBehaviour
     public void BackTitle()
     {
         SceneManager.LoadScene("Title");
+        Time.timeScale = 1;
     }
 }
