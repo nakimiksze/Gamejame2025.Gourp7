@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class PauseManager : MonoBehaviour
 {
     public GameObject pauseMenu;
@@ -21,8 +21,8 @@ public class PauseManager : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    /*public void BackTitle()
+    public void BackTitle()
     {
-        SeanManager.Load("Sean");
-    }*/
+        SceneManager.LoadScene("Title");
+    }
 }

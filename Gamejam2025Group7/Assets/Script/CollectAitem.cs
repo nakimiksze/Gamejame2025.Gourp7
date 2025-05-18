@@ -12,7 +12,7 @@ public class CollectItem : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("player").transform;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     void Update()
@@ -31,7 +31,7 @@ public class CollectItem : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("player"))
+        if (other.CompareTag("Player"))
         {
 
             switch (itemType)
