@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 5035072317454400789}
   - component: {fileID: 1271952450533453721}
   - component: {fileID: 379323598848333925}
-  - component: {fileID: 745135817844728032}
+  - component: {fileID: -7168335492399012606}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -193,7 +193,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interval: 1
   myBullet: {fileID: 1771786169306246710, guid: f19fda10914759246a0e0ebe57c5af70, type: 3}
-  hitMarker: {fileID: 2743096087932315550, guid: 5b063a2d37d798644a197f6aeb1823fd, type: 3}
 --- !u!58 &1271952450533453721
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -257,7 +256,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &745135817844728032
+--- !u!114 &-7168335492399012606
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -269,3 +268,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8394a6b104730964e9322193d70df758, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitMarker: {fileID: 2743096087932315550, guid: 5b063a2d37d798644a197f6aeb1823fd, type: 3}

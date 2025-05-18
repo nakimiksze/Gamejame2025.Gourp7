@@ -312,10 +312,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 745135817844728032, guid: b18b4ccee3b1a124783265b83aca6fcc, type: 3}
-      propertyPath: hitMarker
+    - target: {fileID: -7168335492399012606, guid: b18b4ccee3b1a124783265b83aca6fcc, type: 3}
+      propertyPath: myBullet
       value: 
-      objectReference: {fileID: 2743096087932315550, guid: 5b063a2d37d798644a197f6aeb1823fd, type: 3}
+      objectReference: {fileID: 1771786169306246710, guid: f19fda10914759246a0e0ebe57c5af70, type: 3}
+    - target: {fileID: 5035072317454400789, guid: b18b4ccee3b1a124783265b83aca6fcc, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7682825729969512227, guid: b18b4ccee3b1a124783265b83aca6fcc, type: 3}
       propertyPath: m_Name
       value: player
@@ -360,7 +364,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5035072317454400789, guid: b18b4ccee3b1a124783265b83aca6fcc, type: 3}
     m_RemovedGameObjects:
     - {fileID: 888246398108244667, guid: b18b4ccee3b1a124783265b83aca6fcc, type: 3}
     m_AddedGameObjects: []
