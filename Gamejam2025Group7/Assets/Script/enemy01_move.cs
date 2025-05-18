@@ -16,8 +16,8 @@ public class enemy01_move : MonoBehaviour
     {
         newPos = this.transform.position;
         StartPos = this.transform.position;
-        InvokeRepeating("enemy01Bullet_create", 0, interval); //UŒ‚ƒpƒ^[ƒ“1ƒXƒ^[ƒg
-        Destroy(this.gameObject, 8); //8•bŒã‚É©“®Á–Å
+        InvokeRepeating("enemy01Bullet_create", 0, interval); //ï¿½Uï¿½ï¿½ï¿½pï¿½^ï¿½[ï¿½ï¿½1ï¿½Xï¿½^ï¿½[ï¿½g
+        Destroy(this.gameObject, 8); //8ï¿½bï¿½ï¿½Éï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     }
 
     // Update is called once per frame
@@ -25,27 +25,27 @@ public class enemy01_move : MonoBehaviour
     {
         tim += Time.deltaTime;
         newPos = this.transform.position;
-        if(StartPos.y - newPos.y <= 3)transform.Translate(0, -0.075f, 0); //ˆê’è‚Ì‹——£i‚ñ‚¾‚ç~‚Ü‚é
-        if(tim >= 3) //ˆê’è‚ÌŠÔŒã‚Å‚Ü‚½“®‚­
+        if(StartPos.y - newPos.y <= 3)transform.Translate(0, -0.075f, 0); //ï¿½ï¿½ï¿½Ì‹ï¿½ï¿½ï¿½ï¿½iï¿½ñ‚¾‚ï¿½~ï¿½Ü‚ï¿½
+        if(tim >= 3) //ï¿½ï¿½ï¿½Ìï¿½ï¿½ÔŒï¿½Å‚Ü‚ï¿½ï¿½ï¿½ï¿½ï¿½
         {
-            if (newPos.x > 0) //‰æ–Ê‰E‚É‚¢‚é‚È‚çA‰E‰º‚Ö ¦˜gŸ‘æ‚Å’l•Ï‚¦‚é•K—v—L
+            if (newPos.x > 0) //ï¿½ï¿½Ê‰Eï¿½É‚ï¿½ï¿½ï¿½È‚ï¿½Aï¿½Eï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½gï¿½ï¿½ï¿½ï¿½Å’lï¿½Ï‚ï¿½ï¿½ï¿½Kï¿½vï¿½L
             {
                 transform.Translate(0.025f, -0.05f, 0);
             }
-            else@//‰æ–Ê¶‚É‚¢‚é‚È‚çA¶‰º‚Ö
+            else//ï¿½ï¿½Êï¿½ï¿½É‚ï¿½ï¿½ï¿½È‚ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             {
                 transform.Translate(-0.025f, -0.075f, 0);
             }
         }
 
-        if (enemy01_HP <= 0) Destroy(this.gameObject); //HP‚ª0ˆÈ‰º‚ÅÁ–Å
+        if (enemy01_HP <= 0) Destroy(this.gameObject); //HPï¿½ï¿½0ï¿½È‰ï¿½ï¿½Åï¿½ï¿½ï¿½
     }
 
-    private void enemy01Bullet_create() //UŒ‚ƒpƒ^[ƒ“1
+    private void enemy01Bullet_create() //ï¿½Uï¿½ï¿½ï¿½pï¿½^ï¿½[ï¿½ï¿½1
     {
-        if(StartPos.y - newPos.y >= 3) //ˆê’è‚ÌˆÊ’u‚É‚È‚Á‚½‚çƒXƒ^[ƒg ¦˜gŸ‘æ‚Å’l•Ï‚¦‚é•K—v—L
+        if(StartPos.y - newPos.y >= 3) //ï¿½ï¿½ï¿½ÌˆÊ’uï¿½É‚È‚ï¿½ï¿½ï¿½ï¿½ï¿½Xï¿½^ï¿½[ï¿½g ï¿½ï¿½ï¿½gï¿½ï¿½ï¿½ï¿½Å’lï¿½Ï‚ï¿½ï¿½ï¿½Kï¿½vï¿½L
         {
-            if (newPos.x > 0) //‰æ–Ê‰E‚É‚¢‚é‚È‚çA¶‰º‚ÉŒü‚¯‚ÄUŒ‚ ¦˜gŸ‘æ‚Å’l•Ï‚¦‚é•K—v—L
+            if (newPos.x > 0) //ï¿½ï¿½Ê‰Eï¿½É‚ï¿½ï¿½ï¿½È‚ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½ÉŒï¿½ï¿½ï¿½ï¿½ÄUï¿½ï¿½ ï¿½ï¿½ï¿½gï¿½ï¿½ï¿½ï¿½Å’lï¿½Ï‚ï¿½ï¿½ï¿½Kï¿½vï¿½L
             {
                 for (int i = -5; i < 4; i++)
                 {
@@ -53,7 +53,7 @@ public class enemy01_move : MonoBehaviour
                     var b = Instantiate(enemy01Bullet, newPos, Quaternion.Euler(0, 0, i * 15f));
                 }
             }
-            else //‰æ–Ê¶‚É‚¢‚é‚È‚çA‰E‰º‚ÉŒü‚¯‚ÄUŒ‚
+            else //ï¿½ï¿½Êï¿½ï¿½É‚ï¿½ï¿½ï¿½È‚ï¿½Aï¿½Eï¿½ï¿½ï¿½ÉŒï¿½ï¿½ï¿½ï¿½ÄUï¿½ï¿½
             {
                 for (int i = -3; i < 6; i++)
                 {
@@ -66,7 +66,7 @@ public class enemy01_move : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider2D)
     {
-        if (collider2D.gameObject.tag == "myBullet") //myBullet‚Æƒ^ƒO‚Ì‚Â‚¢‚½ƒIƒuƒWƒFƒNƒg‚É“–‚½‚é‚ÆHPŒ¸­
+        if (collider2D.gameObject.tag == "myBullet") //myBulletï¿½Æƒ^ï¿½Oï¿½Ì‚Â‚ï¿½ï¿½ï¿½ï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½É“ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½HPï¿½ï¿½ï¿½ï¿½
         {
             enemy01_HP -= 5;
         }

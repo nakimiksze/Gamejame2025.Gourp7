@@ -170,3 +170,6 @@ MonoBehaviour:
   myBullet: {fileID: 1771786169306246710, guid: f19fda10914759246a0e0ebe57c5af70, type: 3}
   playerSprite: {fileID: 0}
   bomb: {fileID: 680068255910894149, guid: e8b253593e878d44fa366fe023baf3d1, type: 3}
+  deathSe: {fileID: 8300000, guid: e8fb8eef4ce4c564799eeafd8c67797a, type: 3}
+  bombSe: {fileID: 8300000, guid: 23c2e0cea6c585d4eacb34694ee151b7, type: 3}
+  bombVolume: 0.1

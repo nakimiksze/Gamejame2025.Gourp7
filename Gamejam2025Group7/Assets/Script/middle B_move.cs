@@ -18,7 +18,7 @@ public class middleB_move : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        boss_slider = GameObject.Find("boss_HP").GetComponent<Slider>();
+        boss_slider = GameObject.Find("BossHp").GetComponent<Slider>();
 
         boss_slider.maxValue = boss01_HP;
         boss_slider.minValue = bossmin_HP;
@@ -38,7 +38,7 @@ public class middleB_move : MonoBehaviour
 
         newPos = this.transform.position;
 
-        if (StartPos.y - newPos.y <= 3 && k == 0) transform.Translate(0, -0.075f, 0); //ˆê’è‚Ì‹——£i‚ñ‚¾‚ç~‚Ü‚é
+        if (StartPos.y - newPos.y <= 3 && k == 0) transform.Translate(0, -0.075f, 0); //ï¿½ï¿½ï¿½Ì‹ï¿½ï¿½ï¿½ï¿½iï¿½ñ‚¾‚ï¿½~ï¿½Ü‚ï¿½
         else if(k == 0)
         {
             InvokeRepeating("normal01Bullet_create", 0, interval * 20);
@@ -80,23 +80,23 @@ public class middleB_move : MonoBehaviour
       
         boss_slider.value = Mathf.Clamp(boss01_HP, bossmin_HP, boss01_HP);
 
-        if (boss01_HP <= 0)//boss‚ğ“|‚µ‚½I
+        if (boss01_HP <= 0)//bossï¿½ï¿½|ï¿½ï¿½ï¿½ï¿½ï¿½I
         {
-            //enemyBullet‚Ìƒ^ƒO‚ª‚Â‚¢‚Ä‚¢‚éobj‚ğÁ‚·
+            //enemyBulletï¿½Ìƒ^ï¿½Oï¿½ï¿½ï¿½Â‚ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½objï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             GameObject[] objects = GameObject.FindGameObjectsWithTag("enemyBullet");
             foreach (GameObject obj in objects)
             {
                 Destroy(obj);
             }
-            //ƒXƒ‰ƒCƒ_[”ñ•\¦
+            //ï¿½Xï¿½ï¿½ï¿½Cï¿½_ï¿½[ï¿½ï¿½\ï¿½ï¿½
             boss_slider.gameObject.SetActive(false);
             WeekEnemySystem.instance.j = 0;
-            //’†boss‚ğƒfƒXƒgƒƒCI
+            //ï¿½ï¿½bossï¿½ï¿½ï¿½fï¿½Xï¿½gï¿½ï¿½ï¿½Cï¿½I
             Destroy(this.gameObject);
         }
     }
 
-    private void normal01Bullet_create() //’ÊíUŒ‚ƒpƒ^[ƒ“1
+    private void normal01Bullet_create() //ï¿½Êï¿½Uï¿½ï¿½ï¿½pï¿½^ï¿½[ï¿½ï¿½1
     {
         for (int i = 5; i <= 8; i++)
         {
@@ -110,15 +110,15 @@ public class middleB_move : MonoBehaviour
         }
 
         i++;
-        if (i == 10) //ˆê’è‰ñ”s‚Á‚½uŠÔ
+        if (i == 10) //ï¿½ï¿½ï¿½ñ”sï¿½ï¿½ï¿½ï¿½ï¿½uï¿½ï¿½
         {
             i = 0;
-            CancelInvoke("normal01Bullet_create"); //’ÊíUŒ‚ƒpƒ^[ƒ“1’â~
-            InvokeRepeating("normal02Bullet_create", 0, interval * 5); //’ÊíUŒ‚ƒpƒ^[ƒ“2”­“®
+            CancelInvoke("normal01Bullet_create"); //ï¿½Êï¿½Uï¿½ï¿½ï¿½pï¿½^ï¿½[ï¿½ï¿½1ï¿½ï¿½~
+            InvokeRepeating("normal02Bullet_create", 0, interval * 5); //ï¿½Êï¿½Uï¿½ï¿½ï¿½pï¿½^ï¿½[ï¿½ï¿½2ï¿½ï¿½ï¿½ï¿½
         }
     }
 
-    private void normal02Bullet_create() //’ÊíUŒ‚ƒpƒ^[ƒ“2
+    private void normal02Bullet_create() //ï¿½Êï¿½Uï¿½ï¿½ï¿½pï¿½^ï¿½[ï¿½ï¿½2
     {
         for (int i = 0; i <= 12; i++)
         {
@@ -127,17 +127,17 @@ public class middleB_move : MonoBehaviour
         }
 
         i++;
-        if (i == 20) //ˆê’è‰ñ”s‚Á‚½uŠÔ
+        if (i == 20) //ï¿½ï¿½ï¿½ñ”sï¿½ï¿½ï¿½ï¿½ï¿½uï¿½ï¿½
         {
             i = 0;
-            CancelInvoke("normal02Bullet_create"); //’ÊíUŒ‚ƒpƒ^[ƒ“2’â~
-            InvokeRepeating("normal01Bullet_create", 0, interval * 20); //’ÊíUŒ‚ƒpƒ^[ƒ“1”­“®->ƒ‹[ƒv
+            CancelInvoke("normal02Bullet_create"); //ï¿½Êï¿½Uï¿½ï¿½ï¿½pï¿½^ï¿½[ï¿½ï¿½2ï¿½ï¿½~
+            InvokeRepeating("normal01Bullet_create", 0, interval * 20); //ï¿½Êï¿½Uï¿½ï¿½ï¿½pï¿½^ï¿½[ï¿½ï¿½1ï¿½ï¿½ï¿½ï¿½->ï¿½ï¿½ï¿½[ï¿½v
         }
     }
 
     void OnTriggerEnter2D(Collider2D collider2D)
     {
-        if (collider2D.gameObject.tag == "myBullet") //myBullet‚Æƒ^ƒO‚Ì‚Â‚¢‚½ƒIƒuƒWƒFƒNƒg‚É“–‚½‚é‚ÆHPŒ¸­
+        if (collider2D.gameObject.tag == "myBullet") //myBulletï¿½Æƒ^ï¿½Oï¿½Ì‚Â‚ï¿½ï¿½ï¿½ï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½É“ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½HPï¿½ï¿½ï¿½ï¿½
         {
             boss01_HP -= 5;
         }

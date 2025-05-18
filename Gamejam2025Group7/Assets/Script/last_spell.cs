@@ -9,7 +9,7 @@ public class last_spell : MonoBehaviour
     [SerializeField] Text spell_text;
 
     [SerializeField] Slider boss_slider;
-    [SerializeField] private float bossmin_HP = 0, boss01_HP = 4000;//<- HP4000‚®‚ç‚¢‚©‚Æ
+    [SerializeField] private float bossmin_HP = 0, boss01_HP = 4000;//<- HP4000ï¿½ï¿½ï¿½ç‚¢ï¿½ï¿½ï¿½ï¿½
 
     private Vector3 newPos, StartPos/*,stanPos*/;
 
@@ -23,7 +23,7 @@ public class last_spell : MonoBehaviour
     {
         spell_text = GameObject.Find("lastspell").GetComponent<Text>();
         text_move = GameObject.Find("lastspell").GetComponent<RectTransform>();
-        boss_slider = GameObject.Find("boss_HP").GetComponent<Slider>();
+        boss_slider = GameObject.Find("BossHp").GetComponent<Slider>();
         cutin = GameObject.Find("StandingPicture_Boss");
         //stanPos = cutin.transform.position;
 
@@ -44,7 +44,7 @@ public class last_spell : MonoBehaviour
 
         newPos = this.transform.position;
 
-        if (StartPos.y - newPos.y <= 3 && k == 0) transform.Translate(0, -0.075f, 0); //ˆê’è‚Ì‹——£i‚ñ‚¾‚ç~‚Ü‚é
+        if (StartPos.y - newPos.y <= 3 && k == 0) transform.Translate(0, -0.075f, 0); //ï¿½ï¿½ï¿½Ì‹ï¿½ï¿½ï¿½ï¿½iï¿½ñ‚¾‚ï¿½~ï¿½Ü‚ï¿½
         else if (k == 0) k = 1;
 
         if (time0 > 5 && k == 1)
@@ -85,53 +85,53 @@ public class last_spell : MonoBehaviour
             m = 1;
             InvokeRepeating("normal01Bullet_create", 0, interval * 10);
         }
-        /* ƒXƒyƒJ‘Ò@o—ˆŸ‘æA‰º‚Ìj‚Ì’l•Ï‚¦‚Ä‚È
-        if (boss01_HP <= 3000 && j == 0) //ƒ{ƒX‚ªˆê’è‚ÌHP‚É‚È‚Á‚½uŠÔ
+        /* ï¿½Xï¿½yï¿½Jï¿½Ò@ï¿½oï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½jï¿½Ì’lï¿½Ï‚ï¿½ï¿½Ä‚ï¿½
+        if (boss01_HP <= 3000 && j == 0) //ï¿½{ï¿½Xï¿½ï¿½ï¿½ï¿½ï¿½ï¿½HPï¿½É‚È‚ï¿½ï¿½ï¿½ï¿½uï¿½ï¿½
         {
-            CancelInvoke(); //’ÊíUŒ‚‚Ì’â~
-            spell_text.enabled = true; //ƒXƒyƒ‹–¼‚ğ•\¦
-            spell_text.text = "ƒXƒyƒJ"; //text‚Ì•\‹L•ÏX
-            InvokeRepeating("cutin_move01", 0, interval * 0.025f); //ˆê’è•bŒãƒeƒLƒXƒg‚ğã•”‚ÉˆÚ“®
-            InvokeRepeating("text_move01", 3, interval * 0.025f); //ˆê’è•bŒãƒeƒLƒXƒg‚ğã•”‚ÉˆÚ“®
-            j = 1; //ˆê‰ñ‚µ‚©‚â‚ç‚È‚¢‚æ‚¤‚É‚·‚é‚½‚ß
+            CancelInvoke(); //ï¿½Êï¿½Uï¿½ï¿½ï¿½Ì’ï¿½~
+            spell_text.enabled = true; //ï¿½Xï¿½yï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\ï¿½ï¿½
+            spell_text.text = "ï¿½Xï¿½yï¿½J"; //textï¿½Ì•\ï¿½Lï¿½ÏX
+            InvokeRepeating("cutin_move01", 0, interval * 0.025f); //ï¿½ï¿½ï¿½bï¿½ï¿½eï¿½Lï¿½Xï¿½gï¿½ï¿½ï¿½ã•”ï¿½ÉˆÚ“ï¿½
+            InvokeRepeating("text_move01", 3, interval * 0.025f); //ï¿½ï¿½ï¿½bï¿½ï¿½eï¿½Lï¿½Xï¿½gï¿½ï¿½ï¿½ã•”ï¿½ÉˆÚ“ï¿½
+            j = 1; //ï¿½ï¿½ñ‚µ‚ï¿½ï¿½ï¿½ï¿½È‚ï¿½ï¿½æ‚¤ï¿½É‚ï¿½ï¿½é‚½ï¿½ï¿½
         }
         */
-        if (boss01_HP <= 2000 && j == 0) //ƒ{ƒX‚ªˆê’è‚ÌHP‚É‚È‚Á‚½uŠÔ
+        if (boss01_HP <= 2000 && j == 0) //ï¿½{ï¿½Xï¿½ï¿½ï¿½ï¿½ï¿½ï¿½HPï¿½É‚È‚ï¿½ï¿½ï¿½ï¿½uï¿½ï¿½
         {
-            CancelInvoke(); //ƒXƒyƒJ’â~
+            CancelInvoke(); //ï¿½Xï¿½yï¿½Jï¿½ï¿½~
             InvokeRepeating("normal02Bullet_create", 0, interval * 20);
             j = 1;
         }
 
-        if (boss01_HP <= 1000 && j == 1) //ƒ{ƒX‚ªˆê’è‚ÌHP‚É‚È‚Á‚½uŠÔ
+        if (boss01_HP <= 1000 && j == 1) //ï¿½{ï¿½Xï¿½ï¿½ï¿½ï¿½ï¿½ï¿½HPï¿½É‚È‚ï¿½ï¿½ï¿½ï¿½uï¿½ï¿½
         {
-            CancelInvoke(); //’ÊíUŒ‚‚Ì’â~
-            spell_text.enabled = true; //ƒXƒyƒ‹–¼‚ğ•\¦
-            spell_text.text = "ƒ‰ƒXƒgƒXƒyƒJ"; //text‚Ì•\‹L•ÏX
-            InvokeRepeating("cutin_move01", 0, interval * 0.025f); //ˆê’è•bŒãƒeƒLƒXƒg‚ğã•”‚ÉˆÚ“®
-            InvokeRepeating("text_move01", 3, interval * 0.025f); //ˆê’è•bŒãƒeƒLƒXƒg‚ğã•”‚ÉˆÚ“®
-            j = 2; //ˆê‰ñ‚µ‚©‚â‚ç‚È‚¢‚æ‚¤‚É‚·‚é‚½‚ß
+            CancelInvoke(); //ï¿½Êï¿½Uï¿½ï¿½ï¿½Ì’ï¿½~
+            spell_text.enabled = true; //ï¿½Xï¿½yï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\ï¿½ï¿½
+            spell_text.text = "ï¿½ï¿½ï¿½Xï¿½gï¿½Xï¿½yï¿½J"; //textï¿½Ì•\ï¿½Lï¿½ÏX
+            InvokeRepeating("cutin_move01", 0, interval * 0.025f); //ï¿½ï¿½ï¿½bï¿½ï¿½eï¿½Lï¿½Xï¿½gï¿½ï¿½ï¿½ã•”ï¿½ÉˆÚ“ï¿½
+            InvokeRepeating("text_move01", 3, interval * 0.025f); //ï¿½ï¿½ï¿½bï¿½ï¿½eï¿½Lï¿½Xï¿½gï¿½ï¿½ï¿½ã•”ï¿½ÉˆÚ“ï¿½
+            j = 2; //ï¿½ï¿½ñ‚µ‚ï¿½ï¿½ï¿½ï¿½È‚ï¿½ï¿½æ‚¤ï¿½É‚ï¿½ï¿½é‚½ï¿½ï¿½
         }
 
         boss_slider.value = Mathf.Clamp(boss01_HP, bossmin_HP, boss01_HP);
 
-        if (boss01_HP <= 0)//boss‚ğ“|‚µ‚½I
+        if (boss01_HP <= 0)//bossï¿½ï¿½|ï¿½ï¿½ï¿½ï¿½ï¿½I
         {
-            //enemyBullet‚Ìƒ^ƒO‚ª‚Â‚¢‚Ä‚¢‚éobj‚ğÁ‚·
+            //enemyBulletï¿½Ìƒ^ï¿½Oï¿½ï¿½ï¿½Â‚ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½objï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             GameObject[] objects = GameObject.FindGameObjectsWithTag("enemyBullet");
             foreach (GameObject obj in objects)
             {
                 Destroy(obj);
             }
-            //ƒ‰ƒXƒgƒXƒyƒ‹‚ÌƒeƒLƒXƒg”ñ•\¦
+            //ï¿½ï¿½ï¿½Xï¿½gï¿½Xï¿½yï¿½ï¿½ï¿½Ìƒeï¿½Lï¿½Xï¿½gï¿½ï¿½\ï¿½ï¿½
             spell_text.enabled = false;
             boss_slider.gameObject.SetActive(false);
-            //boss‚ğƒfƒXƒgƒƒCI
+            //bossï¿½ï¿½ï¿½fï¿½Xï¿½gï¿½ï¿½ï¿½Cï¿½I
             Destroy(this.gameObject);
         }
     }
 
-    private void normal01Bullet_create() //’ÊíUŒ‚ƒpƒ^[ƒ“1
+    private void normal01Bullet_create() //ï¿½Êï¿½Uï¿½ï¿½ï¿½pï¿½^ï¿½[ï¿½ï¿½1
     {
         for (int i = 0; i < 24; i++)
         {
@@ -141,7 +141,7 @@ public class last_spell : MonoBehaviour
         }
     }
 
-    private void normal02Bullet_create() //’ÊíUŒ‚ƒpƒ^[ƒ“2
+    private void normal02Bullet_create() //ï¿½Êï¿½Uï¿½ï¿½ï¿½pï¿½^ï¿½[ï¿½ï¿½2
     {
         for (int i = 0; i < 18; i++)
         {
@@ -153,58 +153,58 @@ public class last_spell : MonoBehaviour
         }
     }
 
-    private void cutin_move01() //—§‚¿ŠGˆÚ“®1 ¦˜gŸ‘æ‚Å’l•Ï‚¦‚é•K—v—L
+    private void cutin_move01() //ï¿½ï¿½ï¿½ï¿½ï¿½Gï¿½Ú“ï¿½1 ï¿½ï¿½ï¿½gï¿½ï¿½ï¿½ï¿½Å’lï¿½Ï‚ï¿½ï¿½ï¿½Kï¿½vï¿½L
     {
         cutin.transform.position += new Vector3(-0.02f, 0, 0);
-        if (cutin.transform.position.x <= 8) //ˆê’è‚ÌˆÊ’u‚É’…‚¢‚½uŠÔ
+        if (cutin.transform.position.x <= 8) //ï¿½ï¿½ï¿½ÌˆÊ’uï¿½É’ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½uï¿½ï¿½
         {
             CancelInvoke("cutin_move01");
             InvokeRepeating("cutin_move02", 2.5f, interval * 0.025f);
         }
     }
 
-    private void cutin_move02() //—§‚¿ŠGˆÚ“®2 ¦˜gŸ‘æ‚Å’l•Ï‚¦‚é•K—v—L
+    private void cutin_move02() //ï¿½ï¿½ï¿½ï¿½ï¿½Gï¿½Ú“ï¿½2 ï¿½ï¿½ï¿½gï¿½ï¿½ï¿½ï¿½Å’lï¿½Ï‚ï¿½ï¿½ï¿½Kï¿½vï¿½L
     {
         cutin.transform.position += new Vector3(0.1f, 0, 0);
-        if (cutin.transform.position.x >= 15) //ˆê’è‚ÌˆÊ’u‚É’…‚¢‚½uŠÔ
+        if (cutin.transform.position.x >= 15) //ï¿½ï¿½ï¿½ÌˆÊ’uï¿½É’ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½uï¿½ï¿½
         {
             CancelInvoke("cutin_move02");
         }
     }
 
 
-    private void text_move01() //ƒeƒLƒXƒgˆÚ“® ¦˜gŸ‘æ‚Å’l•Ï‚¦‚é•K—v—L
+    private void text_move01() //ï¿½eï¿½Lï¿½Xï¿½gï¿½Ú“ï¿½ ï¿½ï¿½ï¿½gï¿½ï¿½ï¿½ï¿½Å’lï¿½Ï‚ï¿½ï¿½ï¿½Kï¿½vï¿½L
     {
         text_move.position += new Vector3(0, 1f, 0);
-        if (text_move.position.y >= 320) //ˆê’è‚ÌˆÊ’u‚É’…‚¢‚½uŠÔ
+        if (text_move.position.y >= 320) //ï¿½ï¿½ï¿½ÌˆÊ’uï¿½É’ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½uï¿½ï¿½
         {
-            CancelInvoke(); //ƒeƒLƒXƒg‚Ì“®‚«‚ğ~‚ß‚é
-            /*if (m == 1) ƒXƒyƒJo—ˆŸ‘æ
+            CancelInvoke(); //ï¿½eï¿½Lï¿½Xï¿½gï¿½Ì“ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½~ï¿½ß‚ï¿½
+            /*if (m == 1) ï¿½Xï¿½yï¿½Jï¿½oï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             {
-                InvokeRepeating("ƒXƒyƒJ–¼", 0, interval); //ƒXƒyƒJ”­“®
+                InvokeRepeating("ï¿½Xï¿½yï¿½Jï¿½ï¿½", 0, interval); //ï¿½Xï¿½yï¿½Jï¿½ï¿½ï¿½ï¿½
                 m = 2;
             }
             else */
-            InvokeRepeating("boss01Bullet_create", 0, interval); //ƒ‰ƒXƒgƒXƒyƒJƒpƒ^[ƒ“1”­“®
+            InvokeRepeating("boss01Bullet_create", 0, interval); //ï¿½ï¿½ï¿½Xï¿½gï¿½Xï¿½yï¿½Jï¿½pï¿½^ï¿½[ï¿½ï¿½1ï¿½ï¿½ï¿½ï¿½
         }
     }
 
-    private void boss01Bullet_create() //ƒ‰ƒXƒgƒXƒyƒJƒpƒ^[ƒ“1
+    private void boss01Bullet_create() //ï¿½ï¿½ï¿½Xï¿½gï¿½Xï¿½yï¿½Jï¿½pï¿½^ï¿½[ï¿½ï¿½1
     {
         var a = Instantiate(bossBullet[0], newPos, Quaternion.Euler(0, 0, tim * 120f));
         var b = Instantiate(bossBullet[0], newPos, Quaternion.Euler(0, 0, tim * 120f + 90));
         var c = Instantiate(bossBullet[0], newPos, Quaternion.Euler(0, 0, tim * 120f + 180));
         var d = Instantiate(bossBullet[0], newPos, Quaternion.Euler(0, 0, tim * 120f + 270));
         i++;
-        if (i == 60) //ˆê’è‰ñ”s‚Á‚½uŠÔ
+        if (i == 60) //ï¿½ï¿½ï¿½ñ”sï¿½ï¿½ï¿½ï¿½ï¿½uï¿½ï¿½
         {
             i = 0;
-            CancelInvoke("boss01Bullet_create"); //ƒ‰ƒXƒgƒXƒyƒJƒpƒ^[ƒ“1’â~
-            InvokeRepeating("boss02Bullet_create", 0, interval); //ƒ‰ƒXƒgƒXƒyƒJƒpƒ^[ƒ“2”­“®
+            CancelInvoke("boss01Bullet_create"); //ï¿½ï¿½ï¿½Xï¿½gï¿½Xï¿½yï¿½Jï¿½pï¿½^ï¿½[ï¿½ï¿½1ï¿½ï¿½~
+            InvokeRepeating("boss02Bullet_create", 0, interval); //ï¿½ï¿½ï¿½Xï¿½gï¿½Xï¿½yï¿½Jï¿½pï¿½^ï¿½[ï¿½ï¿½2ï¿½ï¿½ï¿½ï¿½
         }
     }
 
-    private void boss02Bullet_create() //ƒ‰ƒXƒgƒXƒyƒJƒpƒ^[ƒ“2
+    private void boss02Bullet_create() //ï¿½ï¿½ï¿½Xï¿½gï¿½Xï¿½yï¿½Jï¿½pï¿½^ï¿½[ï¿½ï¿½2
     {
         var a = Instantiate(bossBullet[0], newPos, Quaternion.Euler(0, 0, -tim * 120f));
         var b = Instantiate(bossBullet[0], newPos, Quaternion.Euler(0, 0, -tim * 120f + 90));
@@ -219,18 +219,18 @@ public class last_spell : MonoBehaviour
         }
     }
 
-    private void boss03Bullet_create() //ƒ‰ƒXƒgƒXƒyƒJƒpƒ^[ƒ“3
+    private void boss03Bullet_create() //ï¿½ï¿½ï¿½Xï¿½gï¿½Xï¿½yï¿½Jï¿½pï¿½^ï¿½[ï¿½ï¿½3
     {
         for (int i = 3; i > -4; i--)
         {
             var a = Instantiate(bossBullet[1], newPos, Quaternion.Euler(0, 0, i * 30f));
         }
-        InvokeRepeating("boss01Bullet_create", 4, interval); //ƒ‰ƒXƒgƒXƒyƒJƒpƒ^[ƒ“1”­“®
+        InvokeRepeating("boss01Bullet_create", 4, interval); //ï¿½ï¿½ï¿½Xï¿½gï¿½Xï¿½yï¿½Jï¿½pï¿½^ï¿½[ï¿½ï¿½1ï¿½ï¿½ï¿½ï¿½
     }
 
     void OnTriggerEnter2D(Collider2D collider2D)
     {
-        if (collider2D.gameObject.tag == "myBullet") //myBullet‚Æƒ^ƒO‚Ì‚Â‚¢‚½ƒIƒuƒWƒFƒNƒg‚É“–‚½‚é‚ÆHPŒ¸­
+        if (collider2D.gameObject.tag == "myBullet") //myBulletï¿½Æƒ^ï¿½Oï¿½Ì‚Â‚ï¿½ï¿½ï¿½ï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½É“ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½HPï¿½ï¿½ï¿½ï¿½
         {
             boss01_HP -= 5;
         }

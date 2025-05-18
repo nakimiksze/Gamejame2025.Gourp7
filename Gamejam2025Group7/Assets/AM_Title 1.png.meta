@@ -103,9 +103,9 @@ TextureImporter:
       name: AM_Title 1_0
       rect:
         serializedVersion: 2
-        x: 654
+        x: 961
         y: 0
-        width: 1074
+        width: 767
         height: 972
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
