@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class WeekEnemySystem : MonoBehaviour
 {
-    public static WeekEnemySystem instance; //LˆæŒ^‚É‚·‚é‚¼‚¢
+    public static WeekEnemySystem instance; //ï¿½Lï¿½ï¿½^ï¿½É‚ï¿½ï¿½é‚¼ï¿½ï¿½
 
     [SerializeField] private float interval01 = 1, interval02 = 1;
     [SerializeField] private GameObject enemy01,enemy02,boss01,Mboss01;
@@ -21,11 +21,11 @@ public class WeekEnemySystem : MonoBehaviour
                                         new Vector3(9f,6f,0f), new Vector3(-8f,6f,1f),
                                         new Vector3(3f,6f,0f), new Vector3(10f,6f,1f),
                                         new Vector3(10f,6f,0f), new Vector3(-6f,6f,1f)
-                                      }; //G‹›“G01‚ÌÀ•W ¦˜gŸ‘æ‚Å’l•Ï‚¦‚é•K—v—L
+                                      }; //ï¿½Gï¿½ï¿½ï¿½G01ï¿½Ìï¿½ï¿½W ï¿½ï¿½ï¿½gï¿½ï¿½ï¿½ï¿½Å’lï¿½Ï‚ï¿½ï¿½ï¿½Kï¿½vï¿½L
 
     private int i = 0,check,k = 0,m = 0,n = 0;
     public int j = 0;
-    //WeekEnemySystem.instance.j = 0; <-’†ƒ{ƒXÁ–Å‚É“ü‚êtaze
+    //WeekEnemySystem.instance.j = 0; <-ï¿½ï¿½ï¿½{ï¿½Xï¿½ï¿½ï¿½Åï¿½ï¿½É“ï¿½ï¿½ï¿½taze
 
     public void Awake()
     {
@@ -46,7 +46,7 @@ public class WeekEnemySystem : MonoBehaviour
         InvokeRepeating("enemy01_create", 0, interval01);
     }
 
-    void FixedUpdate()@//“G¢Š«‚Ì§Œä
+    void FixedUpdate()//ï¿½Gï¿½ï¿½ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½
     {
         if (j == 0 && m == 1 && n == 0)
         {
@@ -70,7 +70,7 @@ public class WeekEnemySystem : MonoBehaviour
             InvokeRepeating("enemy02_create", 0, interval02);
             j = 4;
         }
-        if(j == 5 && m == 0) //‚±‚±‚Å’†ƒ{ƒXH(Œ»İ‚Ìw’èæ‚Íƒ{ƒX)
+        if(j == 5 && m == 0) //ï¿½ï¿½ï¿½ï¿½ï¿½Å’ï¿½ï¿½{ï¿½Xï¿½H(ï¿½ï¿½ï¿½İ‚Ìwï¿½ï¿½ï¿½Íƒ{ï¿½X)
         {
             i = 0;
             m = 1;
@@ -83,13 +83,13 @@ public class WeekEnemySystem : MonoBehaviour
             Invoke("boss01_create", 0);
         }
         /*
-        ª’†ƒ{ƒX‚ªÁ–Å‚É’†ƒ{ƒX‘¤‚ÌƒXƒNƒŠƒvƒg‚©‚ç‚±‚¿‚ç‚ÌƒXƒNƒŠƒvƒg‚Ì•Ï”‚ğ•Ï‚¦‚é(j = 0‚É‚·‚é)
-        “ñ‰ñ–Ú‚Ìƒ{ƒX‚Ì¢Š«‚¾‚Æ”»•Ê‚·‚é•Ï”‚ğ•t‚¯‰Á‚¦‚é
-        ƒXƒ^[ƒg->G‹›“G->’†ƒ{ƒX->G‹›“G->ƒ{ƒX->ƒNƒŠƒA!
+        ï¿½ï¿½ï¿½ï¿½ï¿½{ï¿½Xï¿½ï¿½ï¿½ï¿½ï¿½Åï¿½ï¿½É’ï¿½ï¿½{ï¿½Xï¿½ï¿½ï¿½ÌƒXï¿½Nï¿½ï¿½ï¿½vï¿½gï¿½ï¿½ï¿½ç‚±ï¿½ï¿½ï¿½ï¿½ÌƒXï¿½Nï¿½ï¿½ï¿½vï¿½gï¿½Ì•Ïï¿½ï¿½ï¿½Ï‚ï¿½ï¿½ï¿½(j = 0ï¿½É‚ï¿½ï¿½ï¿½)
+        ï¿½ï¿½ï¿½Ú‚Ìƒ{ï¿½Xï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ”ï¿½ï¿½Ê‚ï¿½ï¿½ï¿½Ïï¿½ï¿½ï¿½tï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        ï¿½Xï¿½^ï¿½[ï¿½g->ï¿½Gï¿½ï¿½ï¿½G->ï¿½ï¿½ï¿½{ï¿½X->ï¿½Gï¿½ï¿½ï¿½G->ï¿½{ï¿½X->ï¿½Nï¿½ï¿½ï¿½A!
         */
     }
 
-    private void enemy01_create() //G‹›“G01¢Š«I
+    private void enemy01_create() //ï¿½Gï¿½ï¿½ï¿½G01ï¿½ï¿½ï¿½ï¿½ï¿½I
     {
         newPos.x = corPos[i].x;
         var b = Instantiate(enemy01, newPos, Quaternion.identity);
@@ -97,9 +97,9 @@ public class WeekEnemySystem : MonoBehaviour
         i++;
     }
 
-    private void enemy02_create()@//G‹›“G02¢Š«I
+    private void enemy02_create()//ï¿½Gï¿½ï¿½ï¿½G02ï¿½ï¿½ï¿½ï¿½ï¿½I
     {
-        if (check == 0) //¶‰E‚Å5‰ñ‚¸‚Âˆ— ¦˜gŸ‘æ‚Å’l•Ï‚¦‚é•K—v—L
+        if (check == 0) //ï¿½ï¿½ï¿½Eï¿½ï¿½5ï¿½ñ‚¸‚Âï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½gï¿½ï¿½ï¿½ï¿½Å’lï¿½Ï‚ï¿½ï¿½ï¿½Kï¿½vï¿½L
             newPos.x = 1;
         else
             newPos.x = -1;
@@ -124,7 +124,7 @@ public class WeekEnemySystem : MonoBehaviour
         }
     }
 
-    private void boss01_create() //ƒ{ƒX¢Š«i‰¼j
+    private void boss01_create() //ï¿½{ï¿½Xï¿½ï¿½ï¿½ï¿½ï¿½iï¿½ï¿½ï¿½j
     {
         //newPos.y = 3;
         boss_slider.gameObject.SetActive(true);
