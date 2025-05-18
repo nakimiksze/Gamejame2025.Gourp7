@@ -152,7 +152,10 @@ MonoBehaviour:
   - {fileID: 3038078504493492487, guid: ba3496f5f24174347a34a2ac164230a3, type: 3}
   - {fileID: 3038078504493492487, guid: bf77c80dc340efa4a82639a64c7d631c, type: 3}
   - {fileID: 3038078504493492487, guid: 49a3f404a92203741b297680f7417b24, type: 3}
+  - {fileID: 3038078504493492487, guid: 5e666623574e960418b09430afc56016, type: 3}
+  - {fileID: 3038078504493492487, guid: 12af78df11b89d74f90e2264905b586e, type: 3}
+  cutin: {fileID: 0}
   spell_text: {fileID: 0}
   boss_slider: {fileID: 0}
   bossmin_HP: 0
-  boss01_HP: 1800
+  boss01_HP: 4000

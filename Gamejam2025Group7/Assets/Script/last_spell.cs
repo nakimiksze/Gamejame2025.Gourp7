@@ -4,17 +4,17 @@ using UnityEngine.UI;
 public class last_spell : MonoBehaviour
 {
     [SerializeField] private float interval = 0.1f;
-    [SerializeField] private GameObject[] bossBullet = new GameObject[3];
+    [SerializeField] private GameObject[] bossBullet = new GameObject[5];
     [SerializeField] private GameObject cutin;
     [SerializeField] Text spell_text;
 
     [SerializeField] Slider boss_slider;
-    [SerializeField] private float bossmin_HP = 0, boss01_HP = 1800;//<- HP4000ぐらいかと
+    [SerializeField] private float bossmin_HP = 0, boss01_HP = 4000;//<- HP4000ぐらいかと
 
     private Vector3 newPos, StartPos/*,stanPos*/;
 
     private float tim = 0,time0 = 0;
-    private int i,j = 0,k = 0,cha = 0,c_x = 1,c_y = -1;
+    private int i,j = 0,k = 0,cha = 0,c_x = 1,c_y = -1,m = 0;
     private RectTransform text_move;
 
 
@@ -45,7 +45,7 @@ public class last_spell : MonoBehaviour
         newPos = this.transform.position;
 
         if (StartPos.y - newPos.y <= 3 && k == 0) transform.Translate(0, -0.075f, 0); //一定の距離進んだら止まる
-        else k = 1;
+        else if (k == 0) k = 1;
 
         if (time0 > 5 && k == 1)
         {
@@ -80,9 +80,26 @@ public class last_spell : MonoBehaviour
             transform.Translate(c_x * 0.075f,c_y  * 0.01f, 0);
         }
 
-        if (boss01_HP <= 1500 && j == 0) //ボスが一定のHPになった瞬間
+        if (k == 1 && m == 0)
         {
-            InvokeRepeating("normal01Bullet_create", 0, interval * 20);
+            m = 1;
+            InvokeRepeating("normal01Bullet_create", 0, interval * 10);
+        }
+        /* スペカ待　出来次第、下のjの値変えてな
+        if (boss01_HP <= 3000 && j == 0) //ボスが一定のHPになった瞬間
+        {
+            CancelInvoke(); //通常攻撃の停止
+            spell_text.enabled = true; //スペル名を表示
+            spell_text.text = "スペカ"; //textの表記変更
+            InvokeRepeating("cutin_move01", 0, interval * 0.025f); //一定秒後テキストを上部に移動
+            InvokeRepeating("text_move01", 3, interval * 0.025f); //一定秒後テキストを上部に移動
+            j = 1; //一回しかやらないようにするため
+        }
+        */
+        if (boss01_HP <= 2000 && j == 0) //ボスが一定のHPになった瞬間
+        {
+            CancelInvoke(); //スペカ停止
+            InvokeRepeating("normal02Bullet_create", 0, interval * 20);
             j = 1;
         }
 
@@ -90,6 +107,7 @@ public class last_spell : MonoBehaviour
         {
             CancelInvoke(); //通常攻撃の停止
             spell_text.enabled = true; //スペル名を表示
+            spell_text.text = "ラストスペカ"; //textの表記変更
             InvokeRepeating("cutin_move01", 0, interval * 0.025f); //一定秒後テキストを上部に移動
             InvokeRepeating("text_move01", 3, interval * 0.025f); //一定秒後テキストを上部に移動
             j = 2; //一回しかやらないようにするため
@@ -115,13 +133,23 @@ public class last_spell : MonoBehaviour
 
     private void normal01Bullet_create() //通常攻撃パターン1
     {
-        for (int i = 0; i < 12; i++)
+        for (int i = 0; i < 24; i++)
         {
-            var b = Instantiate(bossBullet[2], newPos, Quaternion.Euler(0, 0, i * 30f));
+            var a = Instantiate(bossBullet[0], newPos, Quaternion.Euler(0, 0, i * 15f));
+            var b = Instantiate(bossBullet[3], newPos, Quaternion.Euler(0, 0, i * 15f));
+            var c = Instantiate(bossBullet[4], newPos, Quaternion.Euler(0, 0, i * 15f));
         }
-        for (int i = 0; i < 12; i++)
+    }
+
+    private void normal02Bullet_create() //通常攻撃パターン2
+    {
+        for (int i = 0; i < 18; i++)
         {
-            var c = Instantiate(bossBullet[0], newPos, Quaternion.Euler(0, 0, tim * i * 30f));
+            var b = Instantiate(bossBullet[2], newPos, Quaternion.Euler(0, 0, i * 20f));
+        }
+        for (int i = 0; i < 18; i++)
+        {
+            var c = Instantiate(bossBullet[0], newPos, Quaternion.Euler(0, 0, tim * i * 20f));
         }
     }
 
@@ -151,6 +179,12 @@ public class last_spell : MonoBehaviour
         if (text_move.position.y >= 320) //一定の位置に着いた瞬間
         {
             CancelInvoke(); //テキストの動きを止める
+            /*if (m == 1) スペカ出来次第
+            {
+                InvokeRepeating("スペカ名", 0, interval); //スペカ発動
+                m = 2;
+            }
+            else */
             InvokeRepeating("boss01Bullet_create", 0, interval); //ラストスペカパターン1発動
         }
     }
