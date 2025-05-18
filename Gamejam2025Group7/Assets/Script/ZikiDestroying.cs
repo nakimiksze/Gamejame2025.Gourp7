@@ -6,6 +6,8 @@ public class ZikiDestroying : MonoBehaviour
     [SerializeField] private float interval = 1;
     [SerializeField] private GameObject myBullet;
     [SerializeField] private SpriteRenderer playerSprite;
+    [SerializeField] private GameObject bomb;
+    private GameObject[] bombs = new GameObject[3];
     private GameObject hitMarkerActivating;
     bool isShiftPushing = false;
     private int kuraiFrameCounter = 0;
@@ -14,6 +16,7 @@ public class ZikiDestroying : MonoBehaviour
     bool xCoolTime = false;
     bool zikiInvulnerable = false;
     int xCoolTimeCounter = 0;
+    float StartExplosion = 0;
     void DestroyAllObjectsWithTag(string tag)
     {
         GameObject[] objects = GameObject.FindGameObjectsWithTag(tag); // 指定タグのオブジェクトを取得
@@ -44,8 +47,14 @@ public class ZikiDestroying : MonoBehaviour
         zikiInvulnerable = true;
         DestroyAllObjectsWithTag("bullet");
         DestroyAllObjectsWithTag("enemy");
+        for (int i = 0; i < 3; i++)
+        {
+            float angle = i * 120f; // 120度ずつ配置
+            bombs[i] = Instantiate(bomb, transform.position, Quaternion.identity, transform); // 自機の子オブジェクトに設定
+            StartExplosion++;
+        }
+        
     }
-    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void OnCollisionEnter2D(Collision2D collision)
@@ -54,7 +63,10 @@ public class ZikiDestroying : MonoBehaviour
         {
             Destroy(collision.gameObject);
             kuraiTriggered = true;
-            Debug.Log("くらいボム受付開始！！！");
+        }
+        if (collision.gameObject.tag == "bullet" && zikiInvulnerable)
+        {
+            Destroy(collision.gameObject);
         }
     }
     private void Start()
@@ -95,8 +107,18 @@ public class ZikiDestroying : MonoBehaviour
             transform.Translate(zikiSpeed, 0, 0);
         }
 
-        //自機が無敵時自機を半透明にする
-        SpriteRenderer sr = GetComponent<SpriteRenderer>(); // SpriteRendererを取得
+        if (StartExplosion>=1f&&StartExplosion <= 180f)
+        {
+            StartExplosion++;
+        }
+        if (StartExplosion > 180f)
+        {
+            StartExplosion = 0f;
+            DestroyAllObjectsWithTag("bullet");
+            DestroyAllObjectsWithTag("enemy");
+        }
+            //自機が無敵時自機を半透明にする
+            SpriteRenderer sr = GetComponent<SpriteRenderer>(); // SpriteRendererを取得
         if (sr != null)
         {
             Color newColor = sr.color;
@@ -117,18 +139,17 @@ public class ZikiDestroying : MonoBehaviour
             isShiftPushing = false;
         }
         //ボムクールタイムか否かの処理
-        if (xCoolTime&& xCoolTimeCounter<=128)
+        if (xCoolTime&& xCoolTimeCounter<=250)
         {
             xCoolTimeCounter++;
         }
-        if (xCoolTimeCounter> 128)
+        if (xCoolTimeCounter> 250)
         {
             xCoolTime = false;
             xCoolTimeCounter = 0;
             zikiInvulnerable = false;
-            Debug.Log("ボム使用可能!!");
         }
-        if (IsPlayerExisting("player"))
+        if (GameObject.FindGameObjectWithTag("Player"))
         {
 
             if (isShiftPushing) // Shiftキーを押している間
@@ -147,7 +168,6 @@ public class ZikiDestroying : MonoBehaviour
             if (Input.GetKey(KeyCode.X)&& !xCoolTime)// Xキーでボム
             {
                 BombStart();
-                Debug.Log("ボム発動");
                 xCoolTime = true;
             }
             if (kuraiTriggered)// くらいボム受付イベントが発生していないなら何もしない
@@ -161,12 +181,11 @@ public class ZikiDestroying : MonoBehaviour
                     Destroy(hitMarkerActivating);
                     kuraiFrameCounter = 0; // リセット
                     kuraiTriggered = false;
-                    Debug.Log("くらいボム失敗！！！！！！！！！！！！！！！！");
+                    Destroy(this);
+
                 }
                 else if (kuraiFrameCounter >= 4 && zikiInvulnerable)
                 {
-                    //BombStart(); //あとでかえる
-                    Debug.Log("くらいボム成功したね！！！！！！！！！！！！！！！！");
 
                     kuraiFrameCounter = 0; // リセット
                     kuraiTriggered = false;
