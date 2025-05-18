@@ -7,7 +7,7 @@ public class enemyBullet01 : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Destroy(this.gameObject,2);
+        Destroy(this.gameObject,2); //2ïbå„Ç…é©ìÆè¡ñ≈
     }
 
     void FixedUpdate()

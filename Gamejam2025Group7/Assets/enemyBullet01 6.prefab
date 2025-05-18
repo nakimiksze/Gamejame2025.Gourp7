@@ -12,14 +12,9 @@ GameObject:
   - component: {fileID: 5477438260653264901}
   - component: {fileID: -6831246215164105731}
   - component: {fileID: -5034853863014946860}
-  - component: {fileID: 2260239173901675176}
   m_Layer: 0
-  m_Name: enemyBullet01
-<<<<<<< HEAD
-  m_TagString: bullet
-=======
+  m_Name: enemyBullet01 6
   m_TagString: enemyBullet
->>>>>>> enemy_kita-haru
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -106,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c81226631d677ec47a94d0efa487b376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: -0.1
+  speed: -0.075
 --- !u!50 &-5034853863014946860
 Rigidbody2D:
   serializedVersion: 5
@@ -134,39 +129,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &2260239173901675176
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3038078504493492487}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.4
