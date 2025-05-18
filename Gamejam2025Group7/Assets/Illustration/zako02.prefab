@@ -104,9 +104,9 @@ MonoBehaviour:
   interval: 2
   x: 0.05
   y: 0.1
-  enemy02Bullet: {fileID: 3038078504493492487, guid: ba3496f5f24174347a34a2ac164230a3, type: 3}
+  enemy02Bullet: {fileID: 3038078504493492487, guid: 12af78df11b89d74f90e2264905b586e, type: 3}
   speed: 3
-  player: {fileID: 0}
+  player: {fileID: 7682825729969512227, guid: b18b4ccee3b1a124783265b83aca6fcc, type: 3}
 --- !u!61 &-6910488828829420868
 BoxCollider2D:
   m_ObjectHideFlags: 0

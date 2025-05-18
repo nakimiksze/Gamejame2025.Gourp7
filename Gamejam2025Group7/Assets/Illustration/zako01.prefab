@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interval: 1
-  enemy01Bullet: {fileID: 3038078504493492487, guid: ba3496f5f24174347a34a2ac164230a3, type: 3}
+  enemy01Bullet: {fileID: 3038078504493492487, guid: 12af78df11b89d74f90e2264905b586e, type: 3}
 --- !u!61 &1056198546750224674
 BoxCollider2D:
   m_ObjectHideFlags: 0
