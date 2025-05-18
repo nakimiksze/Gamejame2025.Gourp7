@@ -15,7 +15,7 @@ public class enemy02_move : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.Find("player");
+        player = GameObject.FindWithTag("Player");
         newPos = this.transform.position;
         StartPos = this.transform.position;
         InvokeRepeating("enemy02Bullet_create", 0, interval);
