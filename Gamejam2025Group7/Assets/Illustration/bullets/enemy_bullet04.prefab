@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 7808504024497927539}
   - component: {fileID: 1423676015149297806}
   - component: {fileID: 812654169552970118}
+  - component: {fileID: 4419331694640878109}
   m_Layer: 0
   m_Name: enemy_bullet04
-  m_TagString: bullet
+  m_TagString: enemyBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -14.275006, y: -5.375629, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 4, y: 35, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -167,3 +168,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &4419331694640878109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1393773932365651870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31bdea07e1b476c418f7ba6b9f976839, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scatterBullet: {fileID: 3311860644297728627, guid: f3f2f6a29e5cae342aa39f57040c6ddc, type: 3}
+  speed: -0.2
