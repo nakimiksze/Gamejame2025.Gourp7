@@ -56,6 +56,7 @@ public class ZikiDestroying : MonoBehaviour
         zikiInvulnerable = true;
         DestroyAllObjectsWithTag("bullet");
         DestroyAllObjectsWithTag("enemy");
+        DestroyAllObjectsWithTag("enemyBullet");
         for (int i = 0; i < 3; i++)
         {
             float angle = i * 120f; // 120�x���z�u
@@ -127,6 +128,7 @@ public class ZikiDestroying : MonoBehaviour
             StartExplosion = 0f;
             DestroyAllObjectsWithTag("bullet");
             DestroyAllObjectsWithTag("enemy");
+            DestroyAllObjectsWithTag("enemyBullet");
         }
             //���@�����G�����@�𔼓����ɂ���
             SpriteRenderer sr = GetComponent<SpriteRenderer>(); // SpriteRenderer���擾
