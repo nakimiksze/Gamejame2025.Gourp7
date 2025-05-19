@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static Unity.Burst.Intrinsics.X86.Avx;
 
 public class ZikiDestroying : MonoBehaviour
 {
@@ -80,25 +81,10 @@ public class ZikiDestroying : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("bullet"))
+        if (collision.gameObject.CompareTag("enemyBullet"))
         {
             Destroy(collision.gameObject);
-
-            if (!zikiInvulnerable)
-            {
-                playerHP--;
-
-                if (playerHP <= 0)
-                {
-                    Debug.Log("ゲームオーバー！");
-                    //残機がなくなるとタイトルにもどる
-                    SceneManager.LoadScene("Title");
-                }
-                else
-                {
-                    kuraiTriggered = true;
-                }
-            }
+                kuraiTriggered = true;
         }
     }
 
@@ -207,6 +193,7 @@ public class ZikiDestroying : MonoBehaviour
             BombStart();
             xCoolTime = true;
             bombCount--;
+            zikiInvulnerable = true;
             audioSource.PlayOneShot(bombSe);
         }
         if (kuraiTriggered)// ���炢�{����t�C�x���g���������Ă��Ȃ��Ȃ牽�����Ȃ�
@@ -223,17 +210,32 @@ public class ZikiDestroying : MonoBehaviour
                 xCoolTime = true;
                 zikiInvulnerable = true;
                 xCoolTimeCounter += 180;
+                Debug.Log("死亡");
+                playerHP--;
+
+                if (playerHP <= 0)
+                {
+                    Debug.Log("ゲームオーバー！");
+                    //残機がなくなるとタイトルにもどる
+                    SceneManager.LoadScene("Title");
+                }
 
                 var tmp = audioSource.volume;
                 audioSource.volume = bombVolume;
                 audioSource.PlayOneShot(deathSe);
                 audioSource.volume = tmp;
             }
-            else
+            else if (kuraiFrameCounter >= 8 && zikiInvulnerable)
             {
 
                 kuraiFrameCounter = 0; // ���Z�b�g
                 kuraiTriggered = false;
+
+                var tmp = audioSource.volume;
+                audioSource.volume = bombVolume;
+                audioSource.PlayOneShot(deathSe);
+                audioSource.volume = tmp;
+                Debug.Log("くらいボム成功");
             }
         }
         
