@@ -7,16 +7,16 @@ using UnityEngine.SceneManagement;
 public class last_spell : MonoBehaviour
 {
     [SerializeField] private float interval = 0.1f;
-    [SerializeField] private GameObject[] bossBullet = new GameObject[7];
+    [SerializeField] private GameObject[] bossBullet = new GameObject[9];
     [SerializeField] private GameObject cutin;
     [SerializeField] Text spell_text;
 
     [SerializeField] Slider boss_slider;
-    [SerializeField] private float bossmin_HP = 0, boss01_HP = 4000;//<- HP4000���炢����
+    [SerializeField] private float bossmin_HP = 0, boss01_HP = 10000;//<- HP4000���炢����
     public GameObject pauseMenu;
     [SerializeField] private Canvas canvas;
 
-    private Vector3 newPos, StartPos/*,stanPos*/;
+    private Vector3 newPos, StartPos,bulletPos;
 
     private float tim = 0,time0 = 0;
     private int i,j = 0,k = 0,cha = 0,c_x = 1,c_y = -1,m = 0;
@@ -39,6 +39,8 @@ public class last_spell : MonoBehaviour
 
         newPos = this.transform.position;
         StartPos = newPos;
+        bulletPos.x = 6f;
+        bulletPos.y = 7.0f;
     }
 
     // Update is called once per frame
@@ -90,8 +92,7 @@ public class last_spell : MonoBehaviour
             m = 1;
             InvokeRepeating("normal01Bullet_create", 0, interval * 10);
         }
-        /* �X�y�J�ҁ@�o������A����j�̒l�ς��Ă�
-        if (boss01_HP <= 3000 && j == 0) //�{�X������HP�ɂȂ����u��
+        if (boss01_HP <= 8000 && j == 0) //�{�X������HP�ɂȂ����u��
         {
             CancelInvoke(); //�ʏ�U���̒�~
             spell_text.enabled = true; //�X�y������\��
@@ -100,22 +101,21 @@ public class last_spell : MonoBehaviour
             InvokeRepeating("text_move01", 3, interval * 0.025f); //���b��e�L�X�g���㕔�Ɉړ�
             j = 1; //��񂵂����Ȃ��悤�ɂ��邽��
         }
-        */
-        if (boss01_HP <= 2000 && j == 0) //�{�X������HP�ɂȂ����u��
+        if (boss01_HP <= 5000 && j == 1) //�{�X������HP�ɂȂ����u��
         {
             CancelInvoke(); //�X�y�J��~
             InvokeRepeating("normal02Bullet_create", 0, interval * 20);
-            j = 1;
+            j = 2;
         }
 
-        if (boss01_HP <= 1000 && j == 1) //�{�X������HP�ɂȂ����u��
+        if (boss01_HP <= 3000 && j == 2) //�{�X������HP�ɂȂ����u��
         {
             CancelInvoke(); //�ʏ�U���̒�~
             spell_text.enabled = true; //�X�y������\��
             spell_text.text = "���X�g�X�y�J"; //text�̕\�L�ύX
             InvokeRepeating("cutin_move01", 0, interval * 0.025f); //���b��e�L�X�g���㕔�Ɉړ�
             InvokeRepeating("text_move01", 3, interval * 0.025f); //���b��e�L�X�g���㕔�Ɉړ�
-            j = 2; //��񂵂����Ȃ��悤�ɂ��邽��
+            j = 3; //��񂵂����Ȃ��悤�ɂ��邽��
         }
 
         boss_slider.value = Mathf.Clamp(boss01_HP, bossmin_HP, boss01_HP);
@@ -204,13 +204,13 @@ public class last_spell : MonoBehaviour
         text_move.position += new Vector3(0, 1f, 0);
         if (text_move.position.y >= 320) //���̈ʒu�ɒ������u��
         {
-            CancelInvoke(); //�e�L�X�g�̓������~�߂�
-            /*if (m == 1) �X�y�J�o������
+            CancelInvoke("text_move01"); //�e�L�X�g�̓������~�߂�
+            if (m == 1)
             {
-                InvokeRepeating("�X�y�J��", 0, interval); //�X�y�J����
+                InvokeRepeating("boss11Bullet_create", 0, interval); //�X�y�J����
                 m = 2;
             }
-            else */
+            else 
             InvokeRepeating("boss01Bullet_create", 0, interval); //���X�g�X�y�J�p�^�[��1����
         }
     }
@@ -260,4 +260,38 @@ public class last_spell : MonoBehaviour
             boss01_HP -= 5;
         }
     }
+    private void boss11Bullet_create()
+    {
+        bulletPos.x-=0.5f;
+        bulletPos.y+=0.8f ;
+        var a = Instantiate(bossBullet[7], bulletPos, Quaternion.Euler(0, 0, -30f));
+        i++;
+        if (i >= 8)
+        {
+            i = 0;
+            bulletPos.x = -12f;
+            bulletPos.y = 7.0f;
+            CancelInvoke("boss11Bullet_create"); 
+            InvokeRepeating("boss12Bullet_create", 1, interval);
+            
+        }
+    
+    }
+    private void boss12Bullet_create()
+    {
+        bulletPos.x += 0.5f;
+        bulletPos.y += 0.8f;
+        var a = Instantiate(bossBullet[8], bulletPos, Quaternion.Euler(0, 0, 30f));
+        i++;
+        if (i >= 8)
+        {
+            i = 0;
+            bulletPos.x = 6f;
+            bulletPos.y = 7.0f;
+            CancelInvoke("boss12Bullet_create");
+            InvokeRepeating("boss11Bullet_create", 1, interval);
+        }
+    }
+
+
 }
