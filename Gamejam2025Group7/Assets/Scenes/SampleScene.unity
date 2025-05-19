@@ -426,7 +426,6 @@ MonoBehaviour:
   spell_text: {fileID: 1792325297}
   boss_slider: {fileID: 1924986951}
   j: 0
-  check: 0
 --- !u!1 &364776644
 GameObject:
   m_ObjectHideFlags: 0

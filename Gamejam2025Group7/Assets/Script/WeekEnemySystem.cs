@@ -23,8 +23,8 @@ public class WeekEnemySystem : MonoBehaviour
                                         new Vector3(1.3f,6f,0f), new Vector3(-6.9f,6f,1f)
                                       }; //�G���G01�̍��W ���g����Œl�ς���K�v�L
 
-    private int i = 0,k = 0,m = 0,n = 0;
-    public int j = 0, check;
+    private int i = 0, check,k = 0,m = 0,n = 0;
+    public int j = 0;
     //WeekEnemySystem.instance.j = 0; <-���{�X���Ŏ��ɓ���taze
 
     public void Awake()

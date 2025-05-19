@@ -34,11 +34,11 @@ public class ZikiDestroying : MonoBehaviour
         if (mainShotCooldown == 0)
         {
             Vector3 newPos = this.transform.position;
-            Vector3 offset = new Vector3(0.25f, 0, 0);
+            Vector3 offset = new Vector3(0.25f, 1.25f, 0);
 
             newPos += offset;
             Instantiate(myBullet, newPos, Quaternion.identity);
-            newPos -= 2 * offset;
+            newPos.x -= 2 * offset.x;
             Instantiate(myBullet, newPos, Quaternion.identity);
             mainShotCooldown = interval;
         }

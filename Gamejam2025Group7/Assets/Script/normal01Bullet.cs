@@ -12,7 +12,7 @@ public class normal01Bullet : MonoBehaviour
     void Start()
     {
         player = GameObject.FindWithTag("Player"); //ƒqƒGƒ‰ƒ‹ƒL[ã‚Ìplayer‚ğ“ü‚ê‚é
-        Destroy(this.gameObject, 6); //6•bŒã‚É©“®Á–Å
+        //Destroy(this.gameObject, 6); //6•bŒã‚É©“®Á–Å
     }
 
     void FixedUpdate()
@@ -29,4 +29,10 @@ public class normal01Bullet : MonoBehaviour
             i = 1;
         }
     }
+
+    void OnBecameInvisible()
+    {
+        Destroy(this.gameObject);
+    }
+
 }

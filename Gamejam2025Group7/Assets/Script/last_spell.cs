@@ -85,7 +85,7 @@ public class last_spell : MonoBehaviour
             m = 1;
             InvokeRepeating("normal01Bullet_create", 0, interval * 10);
         }
-        /* スペカ待　出来次第、下のjの値変えてな
+        // スペカ待　出来次第、下のjの値変えてな
         if (boss01_HP <= 3000 && j == 0) //ボスが一定のHPになった瞬間
         {
             CancelInvoke(); //通常攻撃の停止
@@ -95,22 +95,23 @@ public class last_spell : MonoBehaviour
             InvokeRepeating("text_move01", 3, interval * 0.025f); //一定秒後テキストを上部に移動
             j = 1; //一回しかやらないようにするため
         }
-        */
-        if (boss01_HP <= 2000 && j == 0) //ボスが一定のHPになった瞬間
+        
+        if (boss01_HP <= 2000 && j == 1) //ボスが一定のHPになった瞬間
         {
+            spell_text.enabled = false; //スペル名を非表示
             CancelInvoke(); //スペカ停止
             InvokeRepeating("normal02Bullet_create", 0, interval * 20);
-            j = 1;
+            j = 2;
         }
 
-        if (boss01_HP <= 1000 && j == 1) //ボスが一定のHPになった瞬間
+        if (boss01_HP <= 1000 && j == 2) //ボスが一定のHPになった瞬間
         {
             CancelInvoke(); //通常攻撃の停止
             spell_text.enabled = true; //スペル名を表示
-            spell_text.text = "ラストスペカ"; //textの表記変更
+            spell_text.text = "紅葉ノ舞"; //textの表記変更
             InvokeRepeating("cutin_move01", 0, interval * 0.025f); //一定秒後テキストを上部に移動
             InvokeRepeating("text_move01", 3, interval * 0.025f); //一定秒後テキストを上部に移動
-            j = 2; //一回しかやらないようにするため
+            j = 3; //一回しかやらないようにするため
         }
 
         boss_slider.value = Mathf.Clamp(boss01_HP, bossmin_HP, boss01_HP);
@@ -132,7 +133,7 @@ public class last_spell : MonoBehaviour
     }
 
     private void normal01Bullet_create() //通常攻撃パターン1
-    {
+    { 
         for (int i = 0; i < 24; i++)
         {
             var a = Instantiate(bossBullet[0], newPos, Quaternion.Euler(0, 0, i * 15f));
@@ -178,14 +179,39 @@ public class last_spell : MonoBehaviour
         text_move.position += new Vector3(0, 1f, 0);
         if (text_move.position.y >= 320) //一定の位置に着いた瞬間
         {
-            CancelInvoke(); //テキストの動きを止める
-            /*if (m == 1) スペカ出来次第
+            CancelInvoke("text_move01"); //テキストの動きを止める
+            if (m == 1) //スペカ出来次第
             {
-                InvokeRepeating("スペカ名", 0, interval); //スペカ発動
+                Invoke("boss11Bullet_create", 0); //スペカ発動
                 m = 2;
             }
-            else */
-            InvokeRepeating("boss01Bullet_create", 0, interval); //ラストスペカパターン1発動
+            else InvokeRepeating("boss01Bullet_create", 0, interval); //ラストスペカパターン1発動
+        }
+    }
+
+    private void boss11Bullet_create() //スペカパターン1
+    {
+        for (int i = 2; i > -3; i--) 
+        {
+            var a = Instantiate(bossBullet[0], newPos, Quaternion.Euler(0, 0, i * 30f));
+        }   
+        //CancelInvoke("boss11Bullet_create"); //スペカパターン1停止
+        InvokeRepeating("boss12Bullet_create", 3, interval); //スペカパターン2発動
+    }
+
+    private void boss12Bullet_create() //スペカパターン2
+    {
+        for (int i = 0; i < 12; i++)
+        {
+            var a = Instantiate(bossBullet[0], newPos, Quaternion.Euler(0, 0, tim * 15f * i));
+        }
+
+        i++;
+        if (i == 5) //一定回数行った瞬間
+        {
+            i = 0;
+            CancelInvoke("boss12Bullet_create"); //スペカパターン1停止
+            Invoke("boss11Bullet_create", 2); //スペカ発動
         }
     }
 
