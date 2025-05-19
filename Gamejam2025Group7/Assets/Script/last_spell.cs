@@ -1,5 +1,8 @@
+using JetBrains.Annotations;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class last_spell : MonoBehaviour
 {
@@ -11,6 +14,7 @@ public class last_spell : MonoBehaviour
     [SerializeField] Slider boss_slider;
     [SerializeField] private float bossmin_HP = 0, boss01_HP = 4000;//<- HP4000���炢����
     public GameObject pauseMenu;
+    [SerializeField] private Canvas canvas;
 
     private Vector3 newPos, StartPos/*,stanPos*/;
 
@@ -127,12 +131,14 @@ public class last_spell : MonoBehaviour
             //���X�g�X�y���̃e�L�X�g��\��
             spell_text.enabled = false;
             boss_slider.gameObject.SetActive(false);
+            // var isActive = false;
+            // var tmpObject = Instantiate(pauseMenu, canvas.transform);
+            // tmpObject.SetActive(!isActive);
             //boss���f�X�g���C�I
             Destroy(this.gameObject);
+            SceneManager.LoadScene("Title");
+            // Time.timeScale = isActive ? 1 : 0;
             Debug.Log("ゲームクリアおめでとう");
-            var isActive = true;
-            pauseMenu.SetActive(!isActive);
-            Time.timeScale = isActive ? 1 : 0;
         }
     }
 
@@ -159,21 +165,36 @@ public class last_spell : MonoBehaviour
     }
 
     private void cutin_move01() //�����G�ړ�1 ���g����Œl�ς���K�v�L
-    {
+    {   
+        Debug.Log("現在位置: " + cutin.transform.position.x);
         cutin.transform.position += new Vector3(-0.02f, 0, 0);
-        if (cutin.transform.position.x <= 8) //���̈ʒu�ɒ������u��
+        if (cutin.transform.position.x <= 1) //���̈ʒu�ɒ������u��
         {
+            Debug.Log("起動2");
+            // InvokeRepeating("cutin_move02", 2.5f, interval * 0.025f);
+            while (true)
+            {
+                Debug.Log("関数が呼ばれました");
+                cutin.transform.position += new Vector3(0.1f, 0, 0);
+                if (cutin.transform.position.x >= 6) //���̈ʒu�ɒ������u��
+                {
+                    // CancelInvoke("cutin_move02");
+                    break;
+                }
+            }
+
             CancelInvoke("cutin_move01");
-            InvokeRepeating("cutin_move02", 2.5f, interval * 0.025f);
         }
     }
 
     private void cutin_move02() //�����G�ړ�2 ���g����Œl�ς���K�v�L
     {
+        Debug.Log("関数が呼ばれました");
         cutin.transform.position += new Vector3(0.1f, 0, 0);
-        if (cutin.transform.position.x >= 15) //���̈ʒu�ɒ������u��
+        if (cutin.transform.position.x >= 6) //���̈ʒu�ɒ������u��
         {
-            CancelInvoke("cutin_move02");
+            // CancelInvoke("cutin_move02");
+            return;
         }
     }
 
