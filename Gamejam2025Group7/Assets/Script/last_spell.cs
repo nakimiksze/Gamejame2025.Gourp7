@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class last_spell : MonoBehaviour
 {
     [SerializeField] private float interval = 0.1f;
-    [SerializeField] private GameObject[] bossBullet = new GameObject[5];
+    [SerializeField] private GameObject[] bossBullet = new GameObject[7];
     [SerializeField] private GameObject cutin;
     [SerializeField] Text spell_text;
 
@@ -147,8 +147,8 @@ public class last_spell : MonoBehaviour
         for (int i = 0; i < 24; i++)
         {
             var a = Instantiate(bossBullet[0], newPos, Quaternion.Euler(0, 0, i * 15f));
-            var b = Instantiate(bossBullet[3], newPos, Quaternion.Euler(0, 0, i * 15f));
-            var c = Instantiate(bossBullet[4], newPos, Quaternion.Euler(0, 0, i * 15f));
+            var b = Instantiate(bossBullet[5], newPos, Quaternion.Euler(0, 0, i * 15f));
+            var c = Instantiate(bossBullet[6], newPos, Quaternion.Euler(0, 0, i * 15f));
         }
     }
 
@@ -156,11 +156,11 @@ public class last_spell : MonoBehaviour
     {
         for (int i = 0; i < 18; i++)
         {
-            var b = Instantiate(bossBullet[2], newPos, Quaternion.Euler(0, 0, i * 20f));
+            var b = Instantiate(bossBullet[3], newPos, Quaternion.Euler(0, 0, i * 20f));
         }
         for (int i = 0; i < 18; i++)
         {
-            var c = Instantiate(bossBullet[0], newPos, Quaternion.Euler(0, 0, tim * i * 20f));
+            var c = Instantiate(bossBullet[4], newPos, Quaternion.Euler(0, 0, tim * i * 20f));
         }
     }
 
@@ -218,9 +218,9 @@ public class last_spell : MonoBehaviour
     private void boss01Bullet_create() //���X�g�X�y�J�p�^�[��1
     {
         var a = Instantiate(bossBullet[0], newPos, Quaternion.Euler(0, 0, tim * 120f));
-        var b = Instantiate(bossBullet[0], newPos, Quaternion.Euler(0, 0, tim * 120f + 90));
+        var b = Instantiate(bossBullet[1], newPos, Quaternion.Euler(0, 0, tim * 120f + 90));
         var c = Instantiate(bossBullet[0], newPos, Quaternion.Euler(0, 0, tim * 120f + 180));
-        var d = Instantiate(bossBullet[0], newPos, Quaternion.Euler(0, 0, tim * 120f + 270));
+        var d = Instantiate(bossBullet[1], newPos, Quaternion.Euler(0, 0, tim * 120f + 270));
         i++;
         if (i == 60) //���񐔍s�����u��
         {
@@ -232,9 +232,9 @@ public class last_spell : MonoBehaviour
 
     private void boss02Bullet_create() //���X�g�X�y�J�p�^�[��2
     {
-        var a = Instantiate(bossBullet[0], newPos, Quaternion.Euler(0, 0, -tim * 120f));
+        var a = Instantiate(bossBullet[1], newPos, Quaternion.Euler(0, 0, -tim * 120f));
         var b = Instantiate(bossBullet[0], newPos, Quaternion.Euler(0, 0, -tim * 120f + 90));
-        var c = Instantiate(bossBullet[0], newPos, Quaternion.Euler(0, 0, -tim * 120f + 180));
+        var c = Instantiate(bossBullet[1], newPos, Quaternion.Euler(0, 0, -tim * 120f + 180));
         var d = Instantiate(bossBullet[0], newPos, Quaternion.Euler(0, 0, -tim * 120f + 270));
         i++;
         if (i == 60)
@@ -249,11 +249,10 @@ public class last_spell : MonoBehaviour
     {
         for (int i = 3; i > -4; i--)
         {
-            var a = Instantiate(bossBullet[1], newPos, Quaternion.Euler(0, 0, i * 30f));
+            var a = Instantiate(bossBullet[2], newPos, Quaternion.Euler(0, 0, i * 30f));
         }
         InvokeRepeating("boss01Bullet_create", 4, interval); //���X�g�X�y�J�p�^�[��1����
     }
-
     void OnTriggerEnter2D(Collider2D collider2D)
     {
         if (collider2D.gameObject.tag == "myBullet") //myBullet�ƃ^�O�̂����I�u�W�F�N�g�ɓ������HP����

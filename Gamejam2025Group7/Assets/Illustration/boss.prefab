@@ -154,9 +154,12 @@ MonoBehaviour:
   - {fileID: 702619796144560662, guid: 1d01751c244b759408c62f618e799745, type: 3}
   - {fileID: 4359159965343665392, guid: 52832f6b93795d74baba175941d68102, type: 3}
   - {fileID: 9160560388546684487, guid: 8d89d8c6401618843bce11657ea2a51d, type: 3}
+  - {fileID: 9160560388546684487, guid: 8d89d8c6401618843bce11657ea2a51d, type: 3}
+  - {fileID: 8095799563863596467, guid: 2d8e5ad09f11b3840905011a7b3b2e8f, type: 3}
   cutin: {fileID: 0}
   spell_text: {fileID: 0}
   boss_slider: {fileID: 0}
   bossmin_HP: 0
   boss01_HP: 4000
   pauseMenu: {fileID: 5296754685681331377, guid: 0879272f5d36fbb40b35c41c59a37444, type: 3}
+  canvas: {fileID: 0}
