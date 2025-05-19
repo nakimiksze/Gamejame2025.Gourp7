@@ -35,6 +35,6 @@ public class ScoreManager : MonoBehaviour
 
     void UpdateScore()
     {
-        scoreText.text = "Score: " + score.ToString();
+        scoreText.text = score.ToString("N0");
     }
 }
