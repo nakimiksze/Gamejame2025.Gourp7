@@ -10,6 +10,7 @@ public class last_spell : MonoBehaviour
 
     [SerializeField] Slider boss_slider;
     [SerializeField] private float bossmin_HP = 0, boss01_HP = 4000;//<- HP4000���炢����
+    public GameObject pauseMenu;
 
     private Vector3 newPos, StartPos/*,stanPos*/;
 
@@ -24,7 +25,7 @@ public class last_spell : MonoBehaviour
         spell_text = GameObject.Find("lastspell").GetComponent<Text>();
         text_move = GameObject.Find("lastspell").GetComponent<RectTransform>();
         boss_slider = GameObject.Find("BossHp").GetComponent<Slider>();
-        cutin = GameObject.Find("StandingPicture_Boss");
+        cutin = GameObject.FindWithTag("StandingBoss");
         //stanPos = cutin.transform.position;
 
         boss_slider.maxValue = boss01_HP;
@@ -44,7 +45,7 @@ public class last_spell : MonoBehaviour
 
         newPos = this.transform.position;
 
-        if (StartPos.y - newPos.y <= 3 && k == 0) transform.Translate(0, -0.075f, 0); //���̋����i�񂾂�~�܂�
+        if (StartPos.y - newPos.y <= 3 && k == 0) transform.Translate(-0.05f, -0.075f, 0); //���̋����i�񂾂�~�܂�
         else if (k == 0) k = 1;
 
         if (time0 > 5 && k == 1)
@@ -128,6 +129,10 @@ public class last_spell : MonoBehaviour
             boss_slider.gameObject.SetActive(false);
             //boss���f�X�g���C�I
             Destroy(this.gameObject);
+            Debug.Log("ゲームクリアおめでとう");
+            var isActive = true;
+            pauseMenu.SetActive(!isActive);
+            Time.timeScale = isActive ? 1 : 0;
         }
     }
 

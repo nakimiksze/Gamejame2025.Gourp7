@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class WeekEnemySystem : MonoBehaviour
 {
-    public static WeekEnemySystem instance; //?¿½L?¿½?¿½^?¿½É‚ï¿½?¿½é‚¼?¿½?¿½
+    public static WeekEnemySystem instance; //?ï¿½ï¿½L?ï¿½ï¿½?ï¿½ï¿½^?ï¿½ï¿½É‚ï¿½?ï¿½ï¿½é‚¼?ï¿½ï¿½?ï¿½ï¿½
 
     [SerializeField] private float interval01 = 1, interval02 = 1;
     [SerializeField] private GameObject enemy01,enemy02,boss01,Mboss01;
@@ -15,17 +15,17 @@ public class WeekEnemySystem : MonoBehaviour
                                         new Vector3(-7f,6f,0f), new Vector3(-5f,6f,1f),
                                         new Vector3(1f,6f,0f), new Vector3(-4f,6f,1f),
                                         new Vector3(-8f,6f,0f), new Vector3(-3f,6f,1f),
-                                        new Vector3(-4f,6f,0f), new Vector3(-9f,6f,1f),
+                                        new Vector3(-4f,6f,0f), new Vector3(-4f,6f,1f),
                                         new Vector3(-6f,6f,0f), new Vector3(-7f,6f,1f),
                                         new Vector3(2f,6f,0f), new Vector3(-2f,6f,1f),
-                                        new Vector3(-9f,6f,0f), new Vector3(-8f,6f,1f),
+                                        new Vector3(-5f,6f,0f), new Vector3(-8f,6f,1f),
                                         new Vector3(-3f,6f,0f), new Vector3(1f,6f,1f),
                                         new Vector3(1f,6f,0f), new Vector3(-6f,6f,1f)
-                                      }; //?¿½G?¿½?¿½?¿½G01?¿½Ìï¿½?¿½W ?¿½?¿½?¿½g?¿½?¿½?¿½?¿½Å’l?¿½Ï‚ï¿½?¿½?¿½K?¿½v?¿½L
+                                      }; //?ï¿½ï¿½G?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½G01?ï¿½ï¿½Ìï¿½?ï¿½ï¿½W ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½g?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½Å’l?ï¿½ï¿½Ï‚ï¿½?ï¿½ï¿½?ï¿½ï¿½K?ï¿½ï¿½v?ï¿½ï¿½L
 
     private int i = 0,check,k = 0,m = 0,n = 0;
     public int j = 0;
-    //WeekEnemySystem.instance.j = 0; <-?¿½?¿½?¿½{?¿½X?¿½?¿½?¿½Åï¿½?¿½É“ï¿½?¿½?¿½taze
+    //WeekEnemySystem.instance.j = 0; <-?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½{?ï¿½ï¿½X?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½Åï¿½?ï¿½ï¿½É“ï¿½?ï¿½ï¿½?ï¿½ï¿½taze
 
     public void Awake()
     {
@@ -46,7 +46,7 @@ public class WeekEnemySystem : MonoBehaviour
         InvokeRepeating("enemy01_create", 0, interval01);
     }
 
-    void FixedUpdate()//?¿½G?¿½?¿½?¿½?¿½?¿½Ìï¿½?¿½?¿½
+    void FixedUpdate()//?ï¿½ï¿½G?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½Ìï¿½?ï¿½ï¿½?ï¿½ï¿½
     {
         if (j == 0 && m == 1 && n == 0)
         {
@@ -70,7 +70,7 @@ public class WeekEnemySystem : MonoBehaviour
             InvokeRepeating("enemy02_create", 0, interval02);
             j = 4;
         }
-        if(j == 5 && m == 0) //?¿½?¿½?¿½?¿½?¿½Å’ï¿½?¿½{?¿½X?¿½H(?¿½?¿½?¿½İ‚Ìw?¿½?¿½?¿½Íƒ{?¿½X)
+        if(j == 5 && m == 0) //?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½Å’ï¿½?ï¿½ï¿½{?ï¿½ï¿½X?ï¿½ï¿½H(?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½İ‚Ìw?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½Íƒ{?ï¿½ï¿½X)
         {
             i = 0;
             m = 1;
@@ -83,13 +83,13 @@ public class WeekEnemySystem : MonoBehaviour
             Invoke("boss01_create", 0);
         }
         /*
-        ?¿½?¿½?¿½?¿½?¿½{?¿½X?¿½?¿½?¿½?¿½?¿½Åï¿½?¿½É’ï¿½?¿½{?¿½X?¿½?¿½?¿½ÌƒX?¿½N?¿½?¿½?¿½v?¿½g?¿½?¿½?¿½ç‚±?¿½?¿½?¿½?¿½ÌƒX?¿½N?¿½?¿½?¿½v?¿½g?¿½Ì•Ïï¿½?¿½?¿½Ï‚ï¿½?¿½?¿½(j = 0?¿½É‚ï¿½?¿½?¿½)
-        ?¿½?¿½?¿½Ú‚Ìƒ{?¿½X?¿½Ìï¿½?¿½?¿½?¿½?¿½?¿½?¿½?¿½Æ”ï¿½?¿½Ê‚ï¿½?¿½?¿½Ïï¿½?¿½?¿½t?¿½?¿½?¿½?¿½?¿½?¿½?¿½?¿½
-        ?¿½X?¿½^?¿½[?¿½g->?¿½G?¿½?¿½?¿½G->?¿½?¿½?¿½{?¿½X->?¿½G?¿½?¿½?¿½G->?¿½{?¿½X->?¿½N?¿½?¿½?¿½A!
+        ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½{?ï¿½ï¿½X?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½Åï¿½?ï¿½ï¿½É’ï¿½?ï¿½ï¿½{?ï¿½ï¿½X?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ÌƒX?ï¿½ï¿½N?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½v?ï¿½ï¿½g?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ç‚±?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ÌƒX?ï¿½ï¿½N?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½v?ï¿½ï¿½g?ï¿½ï¿½Ì•Ïï¿½?ï¿½ï¿½?ï¿½ï¿½Ï‚ï¿½?ï¿½ï¿½?ï¿½ï¿½(j = 0?ï¿½ï¿½É‚ï¿½?ï¿½ï¿½?ï¿½ï¿½)
+        ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½Ú‚Ìƒ{?ï¿½ï¿½X?ï¿½ï¿½Ìï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½Æ”ï¿½?ï¿½ï¿½Ê‚ï¿½?ï¿½ï¿½?ï¿½ï¿½Ïï¿½?ï¿½ï¿½?ï¿½ï¿½t?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½
+        ?ï¿½ï¿½X?ï¿½ï¿½^?ï¿½ï¿½[?ï¿½ï¿½g->?ï¿½ï¿½G?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½G->?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½{?ï¿½ï¿½X->?ï¿½ï¿½G?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½G->?ï¿½ï¿½{?ï¿½ï¿½X->?ï¿½ï¿½N?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½A!
         */
     }
 
-    private void enemy01_create() //?¿½G?¿½?¿½?¿½G01?¿½?¿½?¿½?¿½?¿½I
+    private void enemy01_create() //?ï¿½ï¿½G?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½G01?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½I
     {
         newPos.x = corPos[i].x;
         var b = Instantiate(enemy01, newPos, Quaternion.identity);
@@ -97,9 +97,9 @@ public class WeekEnemySystem : MonoBehaviour
         i++;
     }
 
-    private void enemy02_create()//?¿½G?¿½?¿½?¿½G02?¿½?¿½?¿½?¿½?¿½I
+    private void enemy02_create()//?ï¿½ï¿½G?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½G02?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½I
     {
-        if (check == 0) //?¿½?¿½?¿½E?¿½?¿½5?¿½?¸‚Âï¿½?¿½?¿½ ?¿½?¿½?¿½g?¿½?¿½?¿½?¿½Å’l?¿½Ï‚ï¿½?¿½?¿½K?¿½v?¿½L
+        if (check == 0) //?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½E?ï¿½ï¿½?ï¿½ï¿½5?ï¿½ï¿½?ï¿½ï¿½Âï¿½?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½g?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½Å’l?ï¿½ï¿½Ï‚ï¿½?ï¿½ï¿½?ï¿½ï¿½K?ï¿½ï¿½v?ï¿½ï¿½L
             newPos.x = 1;
         else
             newPos.x = -1;
@@ -124,7 +124,7 @@ public class WeekEnemySystem : MonoBehaviour
         }
     }
 
-    private void boss01_create() //?¿½{?¿½X?¿½?¿½?¿½?¿½?¿½i?¿½?¿½?¿½j
+    private void boss01_create() //?ï¿½ï¿½{?ï¿½ï¿½X?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½i?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½j
     {
         //newPos.y = 3;
         boss_slider.gameObject.SetActive(true);

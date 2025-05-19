@@ -4,6 +4,8 @@ public class enemy01_move : MonoBehaviour
 {
     [SerializeField] private float interval = 1;
     [SerializeField] private GameObject enemy01Bullet;
+    [SerializeField] private AudioClip deathSe;
+    private AudioSource audioSource;
 
     private Vector3 newPos;
     private Vector3 StartPos;
@@ -18,6 +20,7 @@ public class enemy01_move : MonoBehaviour
         StartPos = this.transform.position;
         InvokeRepeating("enemy01Bullet_create", 0, interval); //�U���p�^�[��1�X�^�[�g
         Destroy(this.gameObject, 8); //8�b��Ɏ�������
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -38,7 +41,11 @@ public class enemy01_move : MonoBehaviour
             }
         }
 
-        if (enemy01_HP <= 0) Destroy(this.gameObject); //HP��0�ȉ��ŏ���
+        if (enemy01_HP <= 0)
+        {
+            audioSource.PlayOneShot(deathSe);
+            Destroy(this.gameObject); //HP��0�ȉ��ŏ���
+        }
     }
 
     private void enemy01Bullet_create() //�U���p�^�[��1

@@ -38,7 +38,7 @@ public class middleB_move : MonoBehaviour
 
         newPos = this.transform.position;
 
-        if (StartPos.y - newPos.y <= 3 && k == 0) transform.Translate(0, -0.075f, 0); //���̋����i�񂾂�~�܂�
+        if (StartPos.y - newPos.y <= 3 && k == 0) transform.Translate(-0.05f, -0.075f, 0); //���̋����i�񂾂�~�܂�
         else if(k == 0)
         {
             InvokeRepeating("normal01Bullet_create", 0, interval * 20);

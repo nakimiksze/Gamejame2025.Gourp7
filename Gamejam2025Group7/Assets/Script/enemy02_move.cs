@@ -7,6 +7,8 @@ public class enemy02_move : MonoBehaviour
 
     [SerializeField] private float speed = 5;
     [SerializeField] GameObject player;
+    [SerializeField] AudioClip deathSe;
+    private AudioSource audioSource;
 
     private Vector3 newPos;
     private Vector3 StartPos;
@@ -21,6 +23,7 @@ public class enemy02_move : MonoBehaviour
         StartPos = this.transform.position;
         InvokeRepeating("enemy02Bullet_create", 0, interval); //�U���p�^�[��1�X�^�[�g
         Destroy(this.gameObject, 6); //6�b��Ɏ�������
+        audioSource = GetComponent<AudioSource>();
     }
 
     void FixedUpdate()
@@ -43,7 +46,12 @@ public class enemy02_move : MonoBehaviour
             this.transform.position = newPos;
         }
 
-        if (enemy02_HP <= 0) Destroy(this.gameObject); //HP��0�ȉ��ŏ���
+        if (enemy02_HP <= 0)
+        {
+            audioSource.PlayOneShot(deathSe);
+            Destroy(this.gameObject); //HP��0�ȉ��ŏ���
+        } 
+            
     }
 
     private void enemy02Bullet_create() //�U���p�^�[��1

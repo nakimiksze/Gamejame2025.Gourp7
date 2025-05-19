@@ -149,10 +149,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interval: 0.1
   MbossBullet:
-  - {fileID: 3038078504493492487, guid: ba3496f5f24174347a34a2ac164230a3, type: 3}
-  - {fileID: 3038078504493492487, guid: 49a3f404a92203741b297680f7417b24, type: 3}
-  - {fileID: 3038078504493492487, guid: 6932cf22b0133644697a5620c1941f15, type: 3}
-  - {fileID: 3038078504493492487, guid: 599f26b01ee5330428b04722592d4ed6, type: 3}
+  - {fileID: 3311860644297728627, guid: f3f2f6a29e5cae342aa39f57040c6ddc, type: 3}
+  - {fileID: 8095799563863596467, guid: 2d8e5ad09f11b3840905011a7b3b2e8f, type: 3}
+  - {fileID: 2334073636275585628, guid: f34368c86508e1f4787d4d16ce7035ea, type: 3}
+  - {fileID: 2044938475229820362, guid: f2f62159ae677ce45816a83586319e99, type: 3}
   boss_slider: {fileID: 0}
   bossmin_HP: 0
   boss01_HP: 1800

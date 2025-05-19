@@ -11,8 +11,8 @@ public class normal01Bullet : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        player = GameObject.Find("player"); //ƒqƒGƒ‰ƒ‹ƒL[ã‚Ìplayer‚ğ“ü‚ê‚é
-        Destroy(this.gameObject, 6); //6•bŒã‚É©“®Á–Å
+        player = GameObject.FindWithTag("Player"); //ï¿½qï¿½Gï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½[ï¿½ï¿½ï¿½playerï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        Destroy(this.gameObject, 6); //6ï¿½bï¿½ï¿½Éï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     }
 
     void FixedUpdate()
