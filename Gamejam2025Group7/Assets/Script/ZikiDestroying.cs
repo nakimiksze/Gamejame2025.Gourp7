@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ZikiDestroying : MonoBehaviour
 {
@@ -10,6 +11,11 @@ public class ZikiDestroying : MonoBehaviour
     [SerializeField] private AudioClip deathSe;
     [SerializeField] private AudioClip bombSe;
     [SerializeField] private float bombVolume = 1.0f;
+    //ステータスの定義
+    [Header("ステータス")]
+    [SerializeField] private int playerHP = 3;
+    [SerializeField] private int bombCount = 3;
+    [SerializeField] private int shotPower = 1;
     private AudioSource audioSource;
     private GameObject[] bombs = new GameObject[3];
     private GameObject hitMarkerActivating;
@@ -40,10 +46,15 @@ public class ZikiDestroying : MonoBehaviour
             Vector3 newPos = this.transform.position;
             Vector3 offset = new Vector3(0.25f, 0, 0);
 
-            newPos += offset;
-            Instantiate(myBullet, newPos, Quaternion.identity);
-            newPos -= 2 * offset;
-            Instantiate(myBullet, newPos, Quaternion.identity);
+            GameObject bullet1 = Instantiate(myBullet, newPos + offset, Quaternion.identity);
+            GameObject bullet2 = Instantiate(myBullet, newPos - offset, Quaternion.identity);
+
+            // 弾にパワーを伝える（Bullet スクリプトが必要）
+            myBullet bulletScript1 = bullet1.GetComponent<myBullet>();
+            myBullet bulletScript2 = bullet2.GetComponent<myBullet>();
+            //if (bulletScript1 != null) bulletScript1.SetPower(shotPower);
+            //if (bulletScript2 != null) bulletScript2.SetPower(shotPower);
+
             mainShotCooldown = interval;
         }
         else
@@ -68,14 +79,25 @@ public class ZikiDestroying : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "bullet" && !zikiInvulnerable)
+        if (collision.gameObject.CompareTag("bullet"))
         {
             Destroy(collision.gameObject);
-            kuraiTriggered = true;
-        }
-        if (collision.gameObject.tag == "bullet" && zikiInvulnerable)
-        {
-            Destroy(collision.gameObject);
+
+            if (!zikiInvulnerable)
+            {
+                playerHP--;
+
+                if (playerHP <= 0)
+                {
+                    Debug.Log("ゲームオーバー！");
+                    //残機がなくなるとタイトルにもどる
+                    SceneManager.LoadScene("Title");
+                }
+                else
+                {
+                    kuraiTriggered = true;
+                }
+            }
         }
     }
 
@@ -178,10 +200,11 @@ public class ZikiDestroying : MonoBehaviour
         {
             mainShotCooldown = 0;
         }
-        if (Input.GetKey(KeyCode.X) && !xCoolTime)// X�L�[�Ń{��
+        if (Input.GetKey(KeyCode.X) && !xCoolTime && bombCount >0)// X�L�[�Ń{��
         {
             BombStart();
             xCoolTime = true;
+            bombCount--;
             audioSource.PlayOneShot(bombSe);
         }
         if (kuraiTriggered)// ���炢�{����t�C�x���g���������Ă��Ȃ��Ȃ牽�����Ȃ�
@@ -204,7 +227,7 @@ public class ZikiDestroying : MonoBehaviour
                 audioSource.PlayOneShot(deathSe);
                 audioSource.volume = tmp;
             }
-            else if (kuraiFrameCounter >= 8 && zikiInvulnerable)
+            else
             {
 
                 kuraiFrameCounter = 0; // ���Z�b�g
