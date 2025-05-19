@@ -108,7 +108,7 @@ public class ZikiDestroying : MonoBehaviour
         {
             isShiftPushing = false;
         }
-        float zikiSpeed = isShiftPushing ? 0.11f : 0.22f; // �ᑬ�Ȃ�Ȃ�Ƃ��A�����Ȃ�Ȃ񂿂��
+        float zikiSpeed = isShiftPushing ? 0.09f : 0.15f; // �ᑬ�Ȃ�Ȃ�Ƃ��A�����Ȃ�Ȃ񂿂��
         //�ړ��̏���
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
