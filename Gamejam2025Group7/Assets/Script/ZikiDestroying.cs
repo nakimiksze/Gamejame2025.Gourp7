@@ -217,7 +217,7 @@ public class ZikiDestroying : MonoBehaviour
                 {
                     Debug.Log("ゲームオーバー！");
                     //残機がなくなるとタイトルにもどる
-                    SceneManager.LoadScene("Title");
+                    // SceneManager.LoadScene("Title");
                 }
 
                 var tmp = audioSource.volume;

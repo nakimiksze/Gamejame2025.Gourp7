@@ -12,7 +12,7 @@ public class last_spell : MonoBehaviour
     [SerializeField] Text spell_text;
 
     [SerializeField] Slider boss_slider;
-    [SerializeField] private float bossmin_HP = 0, boss01_HP = 10000;//<- HP4000���炢����
+    [SerializeField] private float bossmin_HP = 0, boss01_HP = 10000;//<- HP4000????????
     public GameObject pauseMenu;
     [SerializeField] private Canvas canvas;
 
@@ -51,7 +51,7 @@ public class last_spell : MonoBehaviour
 
         newPos = this.transform.position;
 
-        if (StartPos.y - newPos.y <= 3 && k == 0) transform.Translate(-0.05f, -0.075f, 0); //���̋����i�񂾂�~�܂�
+        if (StartPos.y - newPos.y <= 3 && k == 0) transform.Translate(-0.05f, -0.075f, 0); //????????i???~???
         else if (k == 0) k = 1;
 
         if (time0 > 5 && k == 1)
@@ -92,57 +92,57 @@ public class last_spell : MonoBehaviour
             m = 1;
             InvokeRepeating("normal01Bullet_create", 0, interval * 10);
         }
-        if (boss01_HP <= 8000 && j == 0) //�{�X������HP�ɂȂ����u��
+        if (boss01_HP <= 8000 && j == 0) //?{?X??????HP???????u??
         {
-            CancelInvoke(); //�ʏ�U���̒�~
-            spell_text.enabled = true; //�X�y������\��
-            spell_text.text = "�X�y�J"; //text�̕\�L�ύX
-            InvokeRepeating("cutin_move01", 0, interval * 0.025f); //���b��e�L�X�g���㕔�Ɉړ�
-            InvokeRepeating("text_move01", 3, interval * 0.025f); //���b��e�L�X�g���㕔�Ɉړ�
-            j = 1; //��񂵂����Ȃ��悤�ɂ��邽��
+            CancelInvoke(); //???U?????~
+            spell_text.enabled = true; //?X?y??????\??
+            spell_text.text = "�X�y�J"; //text??\?L??X
+            InvokeRepeating("cutin_move01", 0, interval * 0.025f); //???b??e?L?X?g????????
+            InvokeRepeating("text_move01", 3, interval * 0.025f); //???b??e?L?X?g????????
+            j = 1; //??????????????????
         }
-        if (boss01_HP <= 5000 && j == 1) //�{�X������HP�ɂȂ����u��
+        if (boss01_HP <= 5000 && j == 1) //?{?X??????HP???????u??
         {
-            CancelInvoke(); //�X�y�J��~
+            CancelInvoke(); //?X?y?J??~
             InvokeRepeating("normal02Bullet_create", 0, interval * 20);
             j = 2;
         }
 
-        if (boss01_HP <= 3000 && j == 2) //�{�X������HP�ɂȂ����u��
+        if (boss01_HP <= 3000 && j == 2) //?{?X??????HP???????u??
         {
-            CancelInvoke(); //�ʏ�U���̒�~
-            spell_text.enabled = true; //�X�y������\��
-            spell_text.text = "���X�g�X�y�J"; //text�̕\�L�ύX
-            InvokeRepeating("cutin_move01", 0, interval * 0.025f); //���b��e�L�X�g���㕔�Ɉړ�
-            InvokeRepeating("text_move01", 3, interval * 0.025f); //���b��e�L�X�g���㕔�Ɉړ�
-            j = 3; //��񂵂����Ȃ��悤�ɂ��邽��
+            CancelInvoke(); //???U?????~
+            spell_text.enabled = true; //?X?y??????\??
+            spell_text.text = "���X�g�X�y��"; //text??\?L??X
+            InvokeRepeating("cutin_move01", 0, interval * 0.025f); //???b??e?L?X?g????????
+            InvokeRepeating("text_move01", 3, interval * 0.025f); //???b??e?L?X?g????????
+            j = 3; //??????????????????
         }
 
         boss_slider.value = Mathf.Clamp(boss01_HP, bossmin_HP, boss01_HP);
 
-        if (boss01_HP <= 0)//boss��|�����I
+        if (boss01_HP <= 0)//boss??|?????I
         {
-            //enemyBullet�̃^�O�����Ă���obj������
+            //enemyBullet??^?O??????????obj??????
             GameObject[] objects = GameObject.FindGameObjectsWithTag("enemyBullet");
             foreach (GameObject obj in objects)
             {
                 Destroy(obj);
             }
-            //���X�g�X�y���̃e�L�X�g��\��
+            //???X?g?X?y????e?L?X?g??\??
             spell_text.enabled = false;
             boss_slider.gameObject.SetActive(false);
             // var isActive = false;
             // var tmpObject = Instantiate(pauseMenu, canvas.transform);
             // tmpObject.SetActive(!isActive);
-            //boss���f�X�g���C�I
+            //boss???f?X?g???C?I
             Destroy(this.gameObject);
             SceneManager.LoadScene("Title");
             // Time.timeScale = isActive ? 1 : 0;
-            Debug.Log("ゲームクリアおめでとう");
+            Debug.Log("�Q�[���N���A���߂łƂ�");
         }
     }
 
-    private void normal01Bullet_create() //�ʏ�U���p�^�[��1
+    private void normal01Bullet_create() //???U???p?^?[??1
     {
         for (int i = 0; i < 24; i++)
         {
@@ -152,7 +152,7 @@ public class last_spell : MonoBehaviour
         }
     }
 
-    private void normal02Bullet_create() //�ʏ�U���p�^�[��2
+    private void normal02Bullet_create() //???U???p?^?[??2
     {
         for (int i = 0; i < 18; i++)
         {
@@ -164,73 +164,64 @@ public class last_spell : MonoBehaviour
         }
     }
 
-    private void cutin_move01() //�����G�ړ�1 ���g����Œl�ς���K�v�L
+    private void cutin_move01() //?????G???1 ???g?????l?????K?v?L
     {   
-        Debug.Log("現在位置: " + cutin.transform.position.x);
+        Debug.Log("���݈ʒu: " + cutin.transform.position.x);
         cutin.transform.position += new Vector3(-0.02f, 0, 0);
-        if (cutin.transform.position.x <= 1) //���̈ʒu�ɒ������u��
+        if (cutin.transform.position.x <= 1) //?????u????????u??
         {
-            Debug.Log("起動2");
-            // InvokeRepeating("cutin_move02", 2.5f, interval * 0.025f);
-            while (true)
-            {
-                Debug.Log("関数が呼ばれました");
-                cutin.transform.position += new Vector3(0.1f, 0, 0);
-                if (cutin.transform.position.x >= 6) //���̈ʒu�ɒ������u��
-                {
-                    // CancelInvoke("cutin_move02");
-                    break;
-                }
-            }
+            Debug.Log("�N��2");
+            InvokeRepeating("cutin_move02", 2.5f, interval * 0.025f);
+            
 
             CancelInvoke("cutin_move01");
         }
     }
 
-    private void cutin_move02() //�����G�ړ�2 ���g����Œl�ς���K�v�L
+    private void cutin_move02() //?????G???2 ???g?????l?????K?v?L
     {
-        Debug.Log("関数が呼ばれました");
+        Debug.Log("�֐����Ă΂�܂���");
         cutin.transform.position += new Vector3(0.1f, 0, 0);
-        if (cutin.transform.position.x >= 6) //���̈ʒu�ɒ������u��
+        if (cutin.transform.position.x >= 6) //?????u????????u??
         {
-            // CancelInvoke("cutin_move02");
+            CancelInvoke("cutin_move02");
             return;
         }
     }
 
 
-    private void text_move01() //�e�L�X�g�ړ� ���g����Œl�ς���K�v�L
+    private void text_move01() //?e?L?X?g??? ???g?????l?????K?v?L
     {
         text_move.position += new Vector3(0, 1f, 0);
-        if (text_move.position.y >= 320) //���̈ʒu�ɒ������u��
+        if (text_move.position.y >= 320) //?????u????????u??
         {
-            CancelInvoke("text_move01"); //�e�L�X�g�̓������~�߂�
+            CancelInvoke("text_move01"); //?e?L?X?g????????~???
             if (m == 1)
             {
-                InvokeRepeating("boss11Bullet_create", 0, interval); //�X�y�J����
+                InvokeRepeating("boss11Bullet_create", 0, interval); //?X?y?J????
                 m = 2;
             }
             else 
-            InvokeRepeating("boss01Bullet_create", 0, interval); //���X�g�X�y�J�p�^�[��1����
+            InvokeRepeating("boss01Bullet_create", 0, interval); //???X?g?X?y?J?p?^?[??1????
         }
     }
 
-    private void boss01Bullet_create() //���X�g�X�y�J�p�^�[��1
+    private void boss01Bullet_create() //???X?g?X?y?J?p?^?[??1
     {
         var a = Instantiate(bossBullet[0], newPos, Quaternion.Euler(0, 0, tim * 120f));
         var b = Instantiate(bossBullet[1], newPos, Quaternion.Euler(0, 0, tim * 120f + 90));
         var c = Instantiate(bossBullet[0], newPos, Quaternion.Euler(0, 0, tim * 120f + 180));
         var d = Instantiate(bossBullet[1], newPos, Quaternion.Euler(0, 0, tim * 120f + 270));
         i++;
-        if (i == 60) //���񐔍s�����u��
+        if (i == 60) //????s?????u??
         {
             i = 0;
-            CancelInvoke("boss01Bullet_create"); //���X�g�X�y�J�p�^�[��1��~
-            InvokeRepeating("boss02Bullet_create", 0, interval); //���X�g�X�y�J�p�^�[��2����
+            CancelInvoke("boss01Bullet_create"); //???X?g?X?y?J?p?^?[??1??~
+            InvokeRepeating("boss02Bullet_create", 0, interval); //???X?g?X?y?J?p?^?[??2????
         }
     }
 
-    private void boss02Bullet_create() //���X�g�X�y�J�p�^�[��2
+    private void boss02Bullet_create() //???X?g?X?y?J?p?^?[??2
     {
         var a = Instantiate(bossBullet[1], newPos, Quaternion.Euler(0, 0, -tim * 120f));
         var b = Instantiate(bossBullet[0], newPos, Quaternion.Euler(0, 0, -tim * 120f + 90));
@@ -245,17 +236,17 @@ public class last_spell : MonoBehaviour
         }
     }
 
-    private void boss03Bullet_create() //���X�g�X�y�J�p�^�[��3
+    private void boss03Bullet_create() //???X?g?X?y?J?p?^?[??3
     {
         for (int i = 3; i > -4; i--)
         {
             var a = Instantiate(bossBullet[2], newPos, Quaternion.Euler(0, 0, i * 30f));
         }
-        InvokeRepeating("boss01Bullet_create", 4, interval); //���X�g�X�y�J�p�^�[��1����
+        InvokeRepeating("boss01Bullet_create", 4, interval); //???X?g?X?y?J?p?^?[??1????
     }
     void OnTriggerEnter2D(Collider2D collider2D)
     {
-        if (collider2D.gameObject.tag == "myBullet") //myBullet�ƃ^�O�̂����I�u�W�F�N�g�ɓ������HP����
+        if (collider2D.gameObject.tag == "myBullet") //myBullet??^?O???????I?u?W?F?N?g????????HP????
         {
             boss01_HP -= 5;
         }

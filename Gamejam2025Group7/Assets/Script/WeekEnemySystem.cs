@@ -100,9 +100,9 @@ public class WeekEnemySystem : MonoBehaviour
     private void enemy02_create()//?��G?��?��?��G02?��?��?��?��?��I
     {
         if (check == 0) //?��?��?��E?��?��5?��?���?��?�� ?��?��?��g?��?��?��?��Œl?��ς�?��?��K?��v?��L
-            newPos.x = 1;
+            newPos.x = -8;
         else
-            newPos.x = -1;
+            newPos.x = 2.1f;
         
         var b = Instantiate(enemy02, newPos, Quaternion.identity);
         newPos.y += 2;

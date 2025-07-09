@@ -504,7 +504,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d828df9b1c63194cbc0214f40e7dad0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interval01: 3
+  interval01: 2
   interval02: 1
   enemy01: {fileID: 7847926815556742852, guid: 84e368e688f9a5641b27093ff767b41f, type: 3}
   enemy02: {fileID: 7340233209422974678, guid: 31db46ece5379064eaba4496bbdb16fe, type: 3}

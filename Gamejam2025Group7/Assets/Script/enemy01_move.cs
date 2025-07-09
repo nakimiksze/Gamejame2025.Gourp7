@@ -31,7 +31,7 @@ public class enemy01_move : MonoBehaviour
         if(StartPos.y - newPos.y <= 3)transform.Translate(0, -0.075f, 0); //���̋����i�񂾂�~�܂�
         if(tim >= 3) //���̎��Ԍ�ł܂�����
         {
-            if (newPos.x > 0) //��ʉE�ɂ���Ȃ�A�E���� ���g����Œl�ς���K�v�L
+            if (newPos.x > -2.8f) //��ʉE�ɂ���Ȃ�A�E���� ���g����Œl�ς���K�v�L
             {
                 transform.Translate(0.025f, -0.05f, 0);
             }
@@ -52,7 +52,7 @@ public class enemy01_move : MonoBehaviour
     {
         if(StartPos.y - newPos.y >= 3) //���̈ʒu�ɂȂ�����X�^�[�g ���g����Œl�ς���K�v�L
         {
-            if (newPos.x > 0) //��ʉE�ɂ���Ȃ�A�����Ɍ����čU�� ���g����Œl�ς���K�v�L
+            if (newPos.x > -2.8f) //��ʉE�ɂ���Ȃ�A�����Ɍ����čU�� ���g����Œl�ς���K�v�L
             {
                 for (int i = -5; i < 4; i++)
                 {
