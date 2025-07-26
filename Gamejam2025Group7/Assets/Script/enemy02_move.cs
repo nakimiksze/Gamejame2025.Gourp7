@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class enemy02_move : MonoBehaviour
+public class enemy02_move : ItemManager
 {
     [SerializeField] private float interval = 1, x = 0.025f, y = 0.15f;
     [SerializeField] private GameObject enemy02Bullet;
@@ -49,6 +49,8 @@ public class enemy02_move : MonoBehaviour
         if (enemy02_HP <= 0)
         {
             audioSource.PlayOneShot(deathSe);
+            var item = Instantiate(items[Random.Range(0, items.Length)], this.transform.position, Quaternion.identity);
+            Destroy(item, 5f);
             Destroy(this.gameObject); //HP��0�ȉ��ŏ���
         } 
             

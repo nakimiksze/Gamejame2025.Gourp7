@@ -1,10 +1,9 @@
 using TMPro;
 using UnityEngine;
 
-public class ScoreManager : MonoBehaviour
+public class PointManager : MonoBehaviour
 {
-    //�C���X�^���X�̍쐬
-    public static ScoreManager Instance { get; private set; }
+    public static PointManager Instance { get; private set; }
 
     public int score = 0;
     public TMP_Text scoreText;
@@ -26,7 +25,7 @@ public class ScoreManager : MonoBehaviour
         UpdateScore();
     }
 
-    public void AddScore(int amount)
+    public void AddPoint(int amount)
     {
         Debug.Log(amount + "�_��ǉ�");
         score += amount;

@@ -102,6 +102,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f67f7c258d02ff499251e186be55ebb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  items:
+  - {fileID: 3970174520789322947, guid: dff346b7909d74448ad67cd744ba6307, type: 3}
+  - {fileID: 5218581251820738180, guid: 6f3405887124f7546a09dc07944f7000, type: 3}
+  - {fileID: 6089527866600719573, guid: 57e8ed642e8210144b9ac4613aeaec86, type: 3}
+  - {fileID: 6453128087333258128, guid: 898a6ef41e117f64ba942bd83e234f91, type: 3}
   interval: 2
   x: 0.05
   y: 0.1

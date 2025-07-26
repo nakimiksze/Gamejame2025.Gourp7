@@ -1,13 +1,13 @@
 using UnityEngine;
 
-public class CollectItem : MonoBehaviour
+public class CollectAitem : MonoBehaviour
 {
     public enum ItemType { Power, Point, OneUp, Bomb }
     public ItemType itemType;
 
-    public float attractDistance = 2.0f;  // ‹z‚¢Šñ‚¹ŠJn‹——£
-    public float attractSpeed = 5.0f;     // ‹z‚¢Šñ‚¹ƒXƒs[ƒh
-    public float minY = -6f;              // ƒAƒCƒeƒ€‚ÌÁ‚¦‚éˆÊ’u
+    public float attractDistance = 2.0f;  // ï¿½zï¿½ï¿½ï¿½ñ‚¹ŠJï¿½nï¿½ï¿½ï¿½ï¿½
+    public float attractSpeed = 5.0f;     // ï¿½zï¿½ï¿½ï¿½ñ‚¹ƒXï¿½sï¿½[ï¿½h
+    public float minY = -6f;              // ï¿½Aï¿½Cï¿½eï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½Ê’u
 
     Transform player;
 
@@ -19,18 +19,18 @@ public class CollectItem : MonoBehaviour
     {
         if (player != null)
         {   
-            //‹——£‚ğ}‚é
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½}ï¿½ï¿½
             float distance = Vector2.Distance(transform.position, player.position);
             if (distance < attractDistance)
             {
                 OnAbsorbed();
             }
-            // ƒvƒŒƒCƒ„[‚ÉŒü‚©‚Á‚ÄˆÚ“®
+            // ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ÉŒï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÄˆÚ“ï¿½
             Vector2 direction = (player.position - transform.position).normalized;
             transform.position += (Vector3)(direction * attractSpeed * Time.deltaTime);
         }
         
-        //ˆê’è‹——£‚É‹ß‚Ã‚¢‚½‚çƒAƒCƒeƒ€‚ğæ“¾
+        //ï¿½ï¿½è‹—ï¿½ï¿½ï¿½É‹ß‚Ã‚ï¿½ï¿½ï¿½ï¿½ï¿½Aï¿½Cï¿½eï¿½ï¿½ï¿½ï¿½ï¿½æ“¾
         if (transform.position.y < minY)
         {
             Destroy(gameObject);
@@ -38,21 +38,21 @@ public class CollectItem : MonoBehaviour
     }
     void OnAbsorbed()
     {
-        Debug.Log("ƒAƒCƒeƒ€Šl“¾");
+        Debug.Log("ï¿½Aï¿½Cï¿½eï¿½ï¿½ï¿½lï¿½ï¿½");
         switch (itemType)
         {
             case ItemType.Power:
-                //ƒpƒ[‚Ì‘‰Á
+                //ï¿½pï¿½ï¿½ï¿½[ï¿½Ì‘ï¿½ï¿½ï¿½
                 break;
             case ItemType.Point:
-                //ƒXƒRƒA‚Ì‘‰Á
+                //ï¿½Xï¿½Rï¿½Aï¿½Ì‘ï¿½ï¿½ï¿½
                 ScoreManager.Instance?.AddScore(100);
                 break;
             case ItemType.OneUp:
-                // c‹@‚ğ1‘‚â‚·
+                // ï¿½cï¿½@ï¿½ï¿½1ï¿½ï¿½ï¿½â‚·
                 break;
             case ItemType.Bomb:
-                // ƒ{ƒ€‚ğ1‘‚â‚·
+                // ï¿½{ï¿½ï¿½ï¿½ï¿½1ï¿½ï¿½ï¿½â‚·
                 break;
         }
         Destroy(gameObject);
